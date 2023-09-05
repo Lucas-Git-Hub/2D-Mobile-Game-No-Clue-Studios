@@ -59,8 +59,8 @@ public class MouseController : MonoBehaviour
 
         float zIndex = path[0].transform.position.z;
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
-        // Take z index to make sure character has a "height" in the 2D space, +2 z height during movement (to have the character not inside the ground)
-        character.transform.position = new Vector3(character.transform.position.x , path[0].transform.position.y, zIndex+2);
+        // Take z index to make sure character has a "height" in the 2D space
+        character.transform.position = new Vector3(character.transform.position.x , path[0].transform.position.y, zIndex);
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {
@@ -86,8 +86,8 @@ public class MouseController : MonoBehaviour
 
     private void PositionCharacterOnTile(OverlayTile tile)
     {
-        // Place character on clicked tile, and add a small amount of z height so its on top of the tile
-        character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+0.0001f, tile.transform.position.z+2);
+        // Place character on clicked tile
+        character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+0.0001f, tile.transform.position.z);
         character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
         character.activeTile = tile;
     }
