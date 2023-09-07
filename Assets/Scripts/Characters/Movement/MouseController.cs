@@ -44,8 +44,8 @@ public class MouseController : MonoBehaviour
                 //if character isnt spawned in spawn him in on click, else move the character
                 if (character == null)
                 {
-                    // character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    // PositionCharacterOnLine(overlayTile);
+                    character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                    PositionCharacterOnLine(overlayTile);
                     GetInRangeTiles();
                 } else {
                     path = pathFinder.FindPath(character.standingOnTile, overlayTile);
