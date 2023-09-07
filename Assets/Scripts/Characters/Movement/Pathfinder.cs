@@ -26,12 +26,12 @@ public class Pathfinder : MonoBehaviour
                 return GetFinishedList(start, end);
             }
 
-            var neighbourTiles = GetNeighbourTiles(currentOverlayTile);
+            var neighbourTiles = MapManager.Instance.GetNeighbourTiles(currentOverlayTile);
 
             foreach( var neighbour in neighbourTiles)
             {   
                 // Third check in if statement is jump height/to check if character can walk onto next block height
-                if(neighbour.isBlocked || closedList.Contains(neighbour) || Mathf.Abs(currentOverlayTile.gridLocation.z - neighbour.gridLocation.z) > 1)
+                if(neighbour.isBlocked || closedList.Contains(neighbour))
                 {
                     continue;
                 }
@@ -71,58 +71,5 @@ public class Pathfinder : MonoBehaviour
     private int GetManhattenDistance(OverlayTile start, OverlayTile neighbour)
     {
         return Mathf.Abs(start.gridLocation.x - neighbour.gridLocation.x) + Mathf.Abs(start.gridLocation.y - neighbour.gridLocation.y);
-    }
-
-    private List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile)
-    {
-        var map = MapManager.Instance.map;
-
-        List<OverlayTile> neighbours = new List<OverlayTile>();
-
-        // Top Neighbour
-        Vector2Int locationToCheck = new Vector2Int(
-            currentOverlayTile.gridLocation.x,
-            currentOverlayTile.gridLocation.y + 1
-            );
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-
-        // Bottom Neighbour
-        locationToCheck = new Vector2Int(
-            currentOverlayTile.gridLocation.x,
-            currentOverlayTile.gridLocation.y - 1
-            );
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-
-        // Right Neighbour
-        locationToCheck = new Vector2Int(
-            currentOverlayTile.gridLocation.x + 1,
-            currentOverlayTile.gridLocation.y
-            );
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-
-        //Left Neighbour
-        locationToCheck = new Vector2Int(
-            currentOverlayTile.gridLocation.x - 1,
-            currentOverlayTile.gridLocation.y
-            );
-        
-        if (map.ContainsKey(locationToCheck))
-        {
-            neighbours.Add(map[locationToCheck]);
-        }
-
-        return neighbours;
     }
 }

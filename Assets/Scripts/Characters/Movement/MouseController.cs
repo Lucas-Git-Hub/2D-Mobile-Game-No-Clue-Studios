@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,15 @@ public class MouseController : MonoBehaviour
     public GameObject characterPrefab;
     private CharacterInfo character;
     private Pathfinder pathFinder;
+    private RangeFinder rangeFinder;
     private List<OverlayTile> path;
+    private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
     // Start is called before the first frame update
     void Start()
     {
         pathFinder = new Pathfinder();
+        rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
     }
 
@@ -30,8 +34,8 @@ public class MouseController : MonoBehaviour
         {
             OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
             transform.position = overlayTile.transform.position;
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
-             
+            gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
+                
             if(Input.GetMouseButtonDown(0))
             {
                 overlayTile.ShowTile();
@@ -40,9 +44,12 @@ public class MouseController : MonoBehaviour
                 if (character == null)
                 {
                     character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    PositionCharacterOnTile(overlayTile);
+                    PositionCharacterOnLine(overlayTile);
+                    GetInRangeTiles();
                 } else {
-                    path = pathFinder.FindPath(character.activeTile, overlayTile);
+                    path = pathFinder.FindPath(character.standingOnTile, overlayTile);
+
+                    overlayTile.HideTile();
                 }
             }
         }
@@ -50,6 +57,21 @@ public class MouseController : MonoBehaviour
         if(path.Count > 0)
         {
             MoveAlongPath();
+        }
+    }
+
+    private void GetInRangeTiles()
+    {
+        foreach(var item in inRangeTiles)
+        {
+            item.HideTile();
+        }
+        
+        inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 15);
+
+        foreach(var item in inRangeTiles)
+        {
+            item.ShowTile();
         }
     }
 
@@ -64,8 +86,14 @@ public class MouseController : MonoBehaviour
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {
-            PositionCharacterOnTile(path[0]);
+            PositionCharacterOnLine(path[0]);
             path.RemoveAt(0);
+        }
+
+        //Show current available path for player character after moving
+        if(path.Count == 0)
+        {
+            GetInRangeTiles();
         }
     }
 
@@ -76,7 +104,7 @@ public class MouseController : MonoBehaviour
         
         RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos2d, Vector2.zero);
 
-        if (hits.Length > 0 )
+        if (hits.Length > 0)
         {
             return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
@@ -84,11 +112,11 @@ public class MouseController : MonoBehaviour
         return null;
     }
 
-    private void PositionCharacterOnTile(OverlayTile tile)
+    private void PositionCharacterOnLine(OverlayTile tile)
     {
         // Place character on clicked tile
-        character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y+0.0001f, tile.transform.position.z);
-        character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        character.activeTile = tile;
+        character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z);
+        character.GetComponentInChildren<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
+        character.standingOnTile = tile;
     }
 }
