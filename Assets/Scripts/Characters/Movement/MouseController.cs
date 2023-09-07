@@ -33,26 +33,31 @@ public class MouseController : MonoBehaviour
 
         if (focusedTileHit.HasValue)
         {
-            OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
-            transform.position = overlayTile.transform.position;
-            gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
-                
-            if(Input.GetMouseButtonDown(0))
+            if(focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>())
             {
-                overlayTile.ShowTile();
+                 OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
+                 transform.position = overlayTile.transform.position;
+                gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-                //if character isnt spawned in spawn him in on click, else move the character
-                if (character == null)
+                if(Input.GetMouseButtonDown(0))
                 {
-                    character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    PositionCharacterOnLine(overlayTile);
-                    GetInRangeTiles();
-                } else {
-                    path = pathFinder.FindPath(character.standingOnTile, overlayTile);
+                    overlayTile.ShowTile();
 
-                    overlayTile.HideTile();
+                    //if character isnt spawned in spawn him in on click, else move the character
+                    if (character == null)
+                    {
+                        character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                        PositionCharacterOnLine(overlayTile);
+                        GetInRangeTiles();
+                    } else {
+                        path = pathFinder.FindPath(character.standingOnTile, overlayTile);
+
+                        overlayTile.HideTile();
+                    }
                 }
             }
+           
+            Coin coinTile = focusedTileHit.Value.collider.gameObject.GetComponent<Coin>();
         }
 
         if(path.Count > 0)
