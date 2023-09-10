@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class MouseController : MonoBehaviour
 {
     public float speed;
+    private Touch touch;
     public GameObject characterPrefab;
     private CharacterInfo character;
     private SideCharacterInfo sideCharacter;
@@ -30,7 +31,7 @@ public class MouseController : MonoBehaviour
     void LateUpdate()
     {
         var focusedTileHit = GetFocusedOnTile(); 
-
+        
         if (focusedTileHit.HasValue)
         {
             if(focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>())
@@ -39,21 +40,19 @@ public class MouseController : MonoBehaviour
                  transform.position = overlayTile.transform.position;
                 gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-                if(Input.GetMouseButtonDown(0))
+                // if(Input.GetMouseButtonDown(0))
+                overlayTile.ShowTile();
+
+                //if character isnt spawned in spawn him in on click, else move the character
+                if (character == null)
                 {
-                    overlayTile.ShowTile();
+                    character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                    PositionCharacterOnLine(overlayTile);
+                    GetInRangeTiles();
+                } else {
+                    path = pathFinder.FindPath(character.standingOnTile, overlayTile);
 
-                    //if character isnt spawned in spawn him in on click, else move the character
-                    if (character == null)
-                    {
-                        character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                        PositionCharacterOnLine(overlayTile);
-                        GetInRangeTiles();
-                    } else {
-                        path = pathFinder.FindPath(character.standingOnTile, overlayTile);
-
-                        overlayTile.HideTile();
-                    }
+                    overlayTile.HideTile();
                 }
             }
            
@@ -105,14 +104,30 @@ public class MouseController : MonoBehaviour
 
     public RaycastHit2D? GetFocusedOnTile()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mousePos2d = new Vector2(mousePos.x, mousePos.y);
-        
-        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos2d, Vector2.zero);
-
-        if (hits.Length > 0)
+        if(Input.touchCount > 0)
         {
-            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+            touch = Input.GetTouch(0);
+
+            // Handle finger movements based on TouchPhase
+            switch (touch.phase)
+            {
+                //When a touch has first been detected, change the message and record the starting position
+                case (UnityEngine.TouchPhase)UnityEngine.InputSystem.TouchPhase.Began:
+                    // Record initial touch position.
+                    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    Vector2 touchPos2d = new Vector2(touchPos.x, touchPos.y);
+
+                    RaycastHit2D[] hits = Physics2D.RaycastAll(touchPos2d, Vector2.zero);
+
+                    if (hits.Length > 0)
+                    {
+                        return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+                    }
+                    break;
+                case (UnityEngine.TouchPhase)UnityEngine.InputSystem.TouchPhase.Ended:
+                    // Report that the touch has ended when it ends
+                    break;
+            }
         }
 
         return null;
