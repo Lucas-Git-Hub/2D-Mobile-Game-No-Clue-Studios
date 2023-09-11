@@ -10,8 +10,8 @@ public class MapManager : MonoBehaviour
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
     public bool ignoreBottomTiles;
-
     public Dictionary<Vector2Int, OverlayTile> map;
+    
     private void Awake()
     {
         if(_instance != null && _instance != this)
