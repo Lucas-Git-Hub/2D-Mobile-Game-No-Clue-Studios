@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CharacterInfo : MonoBehaviour
 {
     public OverlayTile standingOnTile;
     public int collectedCoins;
+  
 
     void Start()
     {
@@ -44,6 +46,11 @@ public class CharacterInfo : MonoBehaviour
         if (boltGameObject != null)
         {
             Destroy(boltGameObject);
+
+     
+
+
+           
         }
     }
 }
