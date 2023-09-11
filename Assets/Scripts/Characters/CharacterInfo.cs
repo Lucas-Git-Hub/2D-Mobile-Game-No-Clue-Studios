@@ -47,6 +47,8 @@ public class CharacterInfo : MonoBehaviour
         {
             Destroy(boltGameObject);
 
+            // call endscreen here 
+
      
 
 
