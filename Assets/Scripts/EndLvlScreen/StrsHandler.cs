@@ -10,7 +10,7 @@ public class GearsHandler : MonoBehaviour
 
     void Start()
     {
-        
+     
         coinsCount = GameObject.FindGameObjectsWithTag("Coin").Length;
 
     }
