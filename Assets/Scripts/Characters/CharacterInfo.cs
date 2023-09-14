@@ -51,14 +51,11 @@ public class CharacterInfo : MonoBehaviour
         if (boltGameObject != null)
         {
             Destroy(boltGameObject);
-        }
-    }
 
             // call endscreen here 
-            
-                UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString());
-            
-     
+            UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString());
+        }
+    }  
 
 
            
