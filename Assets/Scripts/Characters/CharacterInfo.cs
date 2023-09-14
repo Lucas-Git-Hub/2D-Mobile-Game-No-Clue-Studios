@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class CharacterInfo : MonoBehaviour
 {
     public OverlayTile standingOnTile;
@@ -15,21 +14,26 @@ public class CharacterInfo : MonoBehaviour
         
     }
 
-    void update()
+    void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            CollectCoin(collision.gameObject); // we know collision.gameObject is a coin because it has the "Coin" tag, so pass it to the CollectCoin function
+            CollectCoin(collision.gameObject); 
         }
 
         if (collision.gameObject.CompareTag("Bolt"))
         {
-            CollectBolt(collision.gameObject); // we know collision.gameObject is a coin because it has the "Coin" tag, so pass it to the CollectCoin function
+            CollectBolt(collision.gameObject); 
+        }
+
+        if(collision.gameObject.CompareTag("Snowpile"))
+        {
+            ClearSnowPile(collision.gameObject);
         }
     }
 
@@ -47,6 +51,8 @@ public class CharacterInfo : MonoBehaviour
         if (boltGameObject != null)
         {
             Destroy(boltGameObject);
+        }
+    }
 
             // call endscreen here 
             
@@ -56,6 +62,11 @@ public class CharacterInfo : MonoBehaviour
 
 
            
+    private void ClearSnowPile(GameObject snowPileGameObject)
+    {
+        if (snowPileGameObject != null)
+        {
+            Destroy(snowPileGameObject);
         }
     }
 }

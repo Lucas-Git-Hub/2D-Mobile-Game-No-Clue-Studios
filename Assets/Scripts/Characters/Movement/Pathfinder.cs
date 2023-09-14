@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Pathfinder : MonoBehaviour
-{
+public class Pathfinder
+{ 
     public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end)
     {
         List<OverlayTile> openList = new List<OverlayTile>();

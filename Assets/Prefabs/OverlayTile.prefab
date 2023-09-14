@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1253349669
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1240543352, guid: 43b8cdb60ad2b3e4083d0969f11ab838, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   G: 0
   H: 0
   isBlocked: 0
+  blockStates: 
   previous: {fileID: 0}
   gridLocation: {x: 0, y: 0, z: 0}
 --- !u!60 &8615245698756717062

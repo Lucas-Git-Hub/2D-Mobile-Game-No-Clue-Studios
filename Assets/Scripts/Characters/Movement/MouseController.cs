@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class MouseController : MonoBehaviour
@@ -12,56 +13,59 @@ public class MouseController : MonoBehaviour
     public float speed;
     private Touch touch;
     public GameObject characterPrefab;
+    public TileBase IceCrackTile;
     private CharacterInfo character;
     private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
     private RangeFinder rangeFinder;
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
-
+    public Tilemap tileMap;
+    private OverlayTile startingTile;
+    private OverlayTile endTile;
+    public OverlayTile spawnLocation;
     // Start is called before the first frame update
     void Start()
     {
         pathFinder = new Pathfinder();
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
+
+        //if character isnt spawned in spawn him in on click, else move the character
+        if (character == null)
+        {
+            character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+            PositionCharacterOnLine(spawnLocation);
+            character.standingOnTile = spawnLocation;
+            // GetInRangeTiles();
+        }
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        var focusedTileHit = GetFocusedOnTile(); 
+        RaycastHit2D? focusedTileHit = GetFocusedOnTile(); 
         
         if (focusedTileHit.HasValue)
         {
             if(focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>())
             {
-                 OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
-                 transform.position = overlayTile.transform.position;
+                OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
+                transform.position = overlayTile.transform.position;
                 gameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-                // if(Input.GetMouseButtonDown(0))
                 overlayTile.ShowTile();
 
-                //if character isnt spawned in spawn him in on click, else move the character
-                if (character == null)
-                {
-                    character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    PositionCharacterOnLine(overlayTile);
-                    GetInRangeTiles();
-                } else {
-                    path = pathFinder.FindPath(character.standingOnTile, overlayTile);
+                endTile = overlayTile;
+                startingTile = character.standingOnTile;
+                path = pathFinder.FindPath(character.standingOnTile, overlayTile);
 
-                    overlayTile.HideTile();
-                }
+                overlayTile.HideTile();
             }
-           
-            Coin coinTile = focusedTileHit.Value.collider.gameObject.GetComponent<Coin>();
         }
 
-        if(path.Count > 0)
-        {
-            MoveAlongPath();
+        if(path.Count > 0 && endTile != null)
+        {   
+            MoveAlongPath(startingTile, endTile);
         }
     }
 
@@ -80,25 +84,58 @@ public class MouseController : MonoBehaviour
         }
     }
 
-    private void MoveAlongPath()
+    private void MoveAlongPath(OverlayTile startingTile, OverlayTile end)
     {
         var step = speed * Time.deltaTime;
+        var previousTile = path[0];
+        bool begin = true;
 
         float zIndex = path[0].transform.position.z;
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
         // Take z index to make sure character has a "height" in the 2D space
-        character.transform.position = new Vector3(character.transform.position.x , path[0].transform.position.y, zIndex);
+        character.transform.position = new Vector3(character.transform.position.x , character.transform.position.y, zIndex);
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
-        {
+        {   
             PositionCharacterOnLine(path[0]);
+
+            if(begin)
+            {   
+                if(startingTile.ice == true)
+                {   
+                    // Change Iceblock and refresh the tilemap
+                    tileMap.SetTile(startingTile.gridLocation, IceCrackTile);
+                    RefreshMap();
+                    startingTile.isBlocked = true;
+                }
+                begin = false;
+            }
+
+            if(previousTile.ice == true && path[0] != end)
+            {   
+                // Change Iceblock and refresh the tilemap
+                tileMap.SetTile(previousTile.gridLocation, IceCrackTile);
+                RefreshMap();
+                previousTile.isBlocked = true;
+            }
+            
+            // previousTile = path[0];
             path.RemoveAt(0);
         }
 
         //Show current available path for player character after moving
         if(path.Count == 0)
         {
-            GetInRangeTiles();
+            endTile = character.standingOnTile;
+            // GetInRangeTiles();
+        }
+    }
+
+    public void RefreshMap()
+    {
+        if (tileMap != null)
+        {
+            tileMap.RefreshAllTiles();
         }
     }
 
