@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearsHandler : MonoBehaviour
+public class StrsHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] gears;
@@ -11,13 +11,13 @@ public class GearsHandler : MonoBehaviour
     void Start()
     {
         
-        coinsCount = GameObject.FindGameObjectsWithTag("Coin").Length;
+        coinsCount = GameObject.FindGameObjectsWithTag("Gear").Length;
 
     }
 
-    public void gearsAchieved()
+    public void gearsAcheived()
     {
-        int coinsLeft = GameObject.FindGameObjectsWithTag("Coin").Length;
+        int coinsLeft = GameObject.FindGameObjectsWithTag("coin").Length;
         int coinsCollected = coinsCount - coinsLeft;
 
         float percentage = float.Parse(coinsCollected.ToString()) / float.Parse(coinsCount.ToString()) * 100f;
