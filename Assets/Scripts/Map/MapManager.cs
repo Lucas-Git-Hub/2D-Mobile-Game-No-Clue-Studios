@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance { get { return _instance; } }
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
+    public Tile Ice;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
     
@@ -50,6 +52,11 @@ public class MapManager : MonoBehaviour
                         overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
                         overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
                         overlayTile.gridLocation = tileLocation;
+                        // Checks if its an ice block that's able to melt
+                        if(tileMap.GetTile(tileLocation) == Ice)
+                        {
+                            overlayTile.ice = true;
+                        }
                         map.Add(tileKey, overlayTile);
                     }
                 }

@@ -12,9 +12,9 @@ public class CharacterInfo : MonoBehaviour
         
     }
 
-    void update()
+    void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
