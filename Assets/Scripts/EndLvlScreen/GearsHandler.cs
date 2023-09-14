@@ -28,7 +28,7 @@ public class GearsHandler : MonoBehaviour
 
         }  else if (percentage >= 33f && percentage< 66)
         {
-         gears[0].SetActive(true);
+            gears[0].SetActive(true);
         } else if (percentage >= 66 && percentage < 70)
         {
             gears[0].SetActive(true);
