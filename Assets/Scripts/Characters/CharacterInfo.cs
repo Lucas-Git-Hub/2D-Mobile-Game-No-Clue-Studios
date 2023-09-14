@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class CharacterInfo : MonoBehaviour
 {
     public OverlayTile standingOnTile;
     public int collectedCoins;
-  
+    public TMP_Text scoreText;
 
     void Start()
     {
@@ -48,7 +49,9 @@ public class CharacterInfo : MonoBehaviour
             Destroy(boltGameObject);
 
             // call endscreen here 
-
+            
+                UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString());
+            
      
 
 
