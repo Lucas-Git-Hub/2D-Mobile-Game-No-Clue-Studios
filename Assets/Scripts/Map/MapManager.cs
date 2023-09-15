@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if(_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         }
