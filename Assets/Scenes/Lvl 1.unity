@@ -1855,7 +1855,7 @@ MonoBehaviour:
   isBlocked: 0
   ice: 0
   previous: {fileID: 0}
-  gridLocation: {x: -4, y: -1, z: 1}
+  gridLocation: {x: -6, y: -9, z: 1}
 --- !u!1 &947136225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2294,7 @@ PrefabInstance:
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: spawnLocation
       value: 
-      objectReference: {fileID: 125170775}
+      objectReference: {fileID: 942208171}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: characterPrefab
       value: 
@@ -2303,7 +2303,6 @@ PrefabInstance:
       propertyPath: IceCrackAnimation
       value: 
       objectReference: {fileID: 11400000, guid: a925ddd165dc78f4ca1a1a98fa788afb, type: 2}
-      objectReference: {fileID: 942208171}
     - target: {fileID: 6067834061659370365, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.99
