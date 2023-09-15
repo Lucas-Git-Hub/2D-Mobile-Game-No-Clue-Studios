@@ -99,3 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   characterPrefab: {fileID: 5870289866645401721, guid: c9780e45b4c08e24087c91e062a3904d, type: 3}
+  IceCrackTile: {fileID: 0}
+  tileMap: {fileID: 0}
+  spawnLocation: {fileID: 0}

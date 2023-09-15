@@ -13,7 +13,8 @@ public class MouseController : MonoBehaviour
     public float speed;
     private Touch touch;
     public GameObject characterPrefab;
-    public TileBase IceCrackTile;
+    public TileBase WaterTile;
+    public TileBase IceCrackAnimation;
     private CharacterInfo character;
     private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
@@ -31,7 +32,7 @@ public class MouseController : MonoBehaviour
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
 
-        //if character isnt spawned in spawn him in on click, else move the character
+        //if character isnt spawned in spawn him in
         if (character == null)
         {
             character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
@@ -103,20 +104,25 @@ public class MouseController : MonoBehaviour
             {   
                 if(startingTile.ice == true)
                 {   
-                    // Change Iceblock and refresh the tilemap
-                    tileMap.SetTile(startingTile.gridLocation, IceCrackTile);
-                    RefreshMap();
                     startingTile.isBlocked = true;
+                    tileMap.SetTile(startingTile.gridLocation, IceCrackAnimation);
+                    // RefreshMap();
+                    // Change Iceblock and refresh the tilemap
+                    // tileMap.SetTile(startingTile.gridLocation, WaterTile);
+                    // RefreshMap();
+                    
                 }
                 begin = false;
             }
 
             if(previousTile.ice == true && path[0] != end)
             {   
-                // Change Iceblock and refresh the tilemap
-                tileMap.SetTile(previousTile.gridLocation, IceCrackTile);
-                RefreshMap();
                 previousTile.isBlocked = true;
+                tileMap.SetTile(previousTile.gridLocation, IceCrackAnimation);
+                RefreshMap();
+                // Change Iceblock and refresh the tilemap
+                // tileMap.SetTile(previousTile.gridLocation, WaterTile);
+                // RefreshMap();
             }
             
             // previousTile = path[0];

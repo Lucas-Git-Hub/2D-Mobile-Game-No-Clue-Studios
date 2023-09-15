@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26858faf2b96a7140b8f2e4408a9d2f4
+guid: 3d8ff48b3ab0b78429810205957e8054
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,253 +123,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_0
+      name: cindy V2 rolling cycle back sprite sheet_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 22
-        width: 74
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 2
+        width: 23
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb5b101954ac06f4fa7801c473970a02
-      internalID: 1748317119
+      spriteID: bb8198ba4db517747ab30cc4e6f43ef3
+      internalID: -1679587322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_1
+      name: cindy V2 rolling cycle back sprite sheet_1
       rect:
         serializedVersion: 2
-        x: 106
-        y: 22
-        width: 28
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 36
+        y: 2
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6ecc88b8c9e462469bedfe0077eb77c
-      internalID: -1636473132
+      spriteID: 780a18638f659a743a416581da5a3b23
+      internalID: -1828321351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_2
+      name: cindy V2 rolling cycle back sprite sheet_2
       rect:
         serializedVersion: 2
-        x: 154
-        y: 22
-        width: 28
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 68
+        y: 2
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8779164ddd733ed4b93af4450534f147
-      internalID: 1074004738
+      spriteID: ac8b609f52b898345b425141f0759c7f
+      internalID: -1455476295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_3
+      name: cindy V2 rolling cycle back sprite sheet_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 22
-        width: 28
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 100
+        y: 2
+        width: 23
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6690e8f8d2422134d95ea0e01a859370
-      internalID: 966861651
+      spriteID: 7ad02b8860525ad4498024a5e7a4d162
+      internalID: -264326761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_4
+      name: cindy V2 rolling cycle back sprite sheet_4
       rect:
         serializedVersion: 2
-        x: 248
-        y: 20
-        width: 28
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 132
+        y: 2
+        width: 23
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d7c337f4a24d7d47ab4e3485f88802e
-      internalID: 425527290
+      spriteID: a90b58a3b27e7a64e8bf3e5d2290c5fe
+      internalID: -820151283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_5
+      name: cindy V2 rolling cycle back sprite sheet_5
       rect:
         serializedVersion: 2
-        x: 296
-        y: 24
-        width: 16
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 164
+        y: 2
+        width: 23
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9601d0f472216c14faf399314c21ecbe
-      internalID: 1947711973
+      spriteID: e7074848a05876b4da80ec87bf5c05b2
+      internalID: -1504392986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_6
+      name: cindy V2 rolling cycle back sprite sheet_6
       rect:
         serializedVersion: 2
-        x: 313
-        y: 26
-        width: 13
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 196
+        y: 2
+        width: 23
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a82d17f8d90ec843a33c9403342c540
-      internalID: -1187713116
+      spriteID: d98d5fb35de5ab1458d72c0040d782af
+      internalID: 1912609633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_7
+      name: cindy V2 rolling cycle back sprite sheet_7
       rect:
         serializedVersion: 2
-        x: 351
-        y: 30
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 228
+        y: 2
+        width: 23
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c153b5079261f9f469dc72110504d569
-      internalID: -1485895045
+      spriteID: 4aab2a6c3f2e5f845af0006c49cb7979
+      internalID: 1659413586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_8
+      name: cindy V2 rolling cycle back sprite sheet_8
       rect:
         serializedVersion: 2
-        x: 358
-        y: 20
-        width: 16
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 260
+        y: 2
+        width: 23
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1eb2a2989d06ffb44a4fdba2dfa5ca66
-      internalID: 1681167869
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_9
-      rect:
-        serializedVersion: 2
-        x: 309
-        y: 25
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2e8901dc3089794ca02fbdc36e46a06
-      internalID: 1725515841
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_10
-      rect:
-        serializedVersion: 2
-        x: 344
-        y: 25
-        width: 8
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2aed66e9b7e47e54e87f80f99717d8e0
-      internalID: 1952581278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ice breaking frames V1 sprite sheet_11
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 20
-        width: 7
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14df1b0338dbbfc49929d50950e9fc7d
-      internalID: -2019225562
+      spriteID: bee8e8dc3063ddb41b16cd47dbf0172e
+      internalID: -578621356
       vertices: []
       indices: 
       edges: []
@@ -385,18 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ice breaking frames V1 sprite sheet_0: 1748317119
-      ice breaking frames V1 sprite sheet_1: -1636473132
-      ice breaking frames V1 sprite sheet_10: 1952581278
-      ice breaking frames V1 sprite sheet_11: -2019225562
-      ice breaking frames V1 sprite sheet_2: 1074004738
-      ice breaking frames V1 sprite sheet_3: 966861651
-      ice breaking frames V1 sprite sheet_4: 425527290
-      ice breaking frames V1 sprite sheet_5: 1947711973
-      ice breaking frames V1 sprite sheet_6: -1187713116
-      ice breaking frames V1 sprite sheet_7: -1485895045
-      ice breaking frames V1 sprite sheet_8: 1681167869
-      ice breaking frames V1 sprite sheet_9: 1725515841
+      cindy V2 rolling cycle back sprite sheet_0: -1679587322
+      cindy V2 rolling cycle back sprite sheet_1: -1828321351
+      cindy V2 rolling cycle back sprite sheet_2: -1455476295
+      cindy V2 rolling cycle back sprite sheet_3: -264326761
+      cindy V2 rolling cycle back sprite sheet_4: -820151283
+      cindy V2 rolling cycle back sprite sheet_5: -1504392986
+      cindy V2 rolling cycle back sprite sheet_6: 1912609633
+      cindy V2 rolling cycle back sprite sheet_7: 1659413586
+      cindy V2 rolling cycle back sprite sheet_8: -578621356
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
