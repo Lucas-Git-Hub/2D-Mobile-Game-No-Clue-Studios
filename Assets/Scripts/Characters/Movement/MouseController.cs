@@ -104,25 +104,22 @@ public class MouseController : MonoBehaviour
             {   
                 if(startingTile.ice == true)
                 {   
+                    // Change Iceblock and refresh the tilemap
                     startingTile.isBlocked = true;
                     tileMap.SetTile(startingTile.gridLocation, IceCrackAnimation);
-                    // RefreshMap();
-                    // Change Iceblock and refresh the tilemap
-                    // tileMap.SetTile(startingTile.gridLocation, WaterTile);
-                    // RefreshMap();
-                    
+                    character.PlayIceCrackingSound();
+                    RefreshMap();
                 }
                 begin = false;
             }
 
             if(previousTile.ice == true && path[0] != end)
             {   
+                // Change Iceblock and refresh the tilemap
                 previousTile.isBlocked = true;
                 tileMap.SetTile(previousTile.gridLocation, IceCrackAnimation);
+                character.PlayIceCrackingSound();
                 RefreshMap();
-                // Change Iceblock and refresh the tilemap
-                // tileMap.SetTile(previousTile.gridLocation, WaterTile);
-                // RefreshMap();
             }
             
             // previousTile = path[0];

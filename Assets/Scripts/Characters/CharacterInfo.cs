@@ -8,15 +8,38 @@ public class CharacterInfo : MonoBehaviour
     public OverlayTile standingOnTile;
     public int collectedCoins;
     public TMP_Text scoreText;
+    public AudioClip coinPickup;
+    public AudioClip boltPickup;
+    public AudioClip backgroundMusic;
+    public AudioClip iceCrackSound;
+    public bool playBackgroundMusic = false;
+    private AudioSource currentSoundSource;
+    public float musicVolume = 0.8f;
 
     void Start()
     {
-        
+        currentSoundSource = GetComponentInChildren<AudioSource>();
+
+        if(playBackgroundMusic == true)
+        {
+            currentSoundSource.clip = backgroundMusic;
+            currentSoundSource.volume = musicVolume;
+            currentSoundSource.loop = true;
+            currentSoundSource.Play();
+        }
     }
 
     void Update()
     {
         
+    }
+
+    public void PlayIceCrackingSound()
+    {
+        if(iceCrackSound != null)
+        {
+            currentSoundSource.PlayOneShot(iceCrackSound, 1);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,6 +65,10 @@ public class CharacterInfo : MonoBehaviour
         if (coinGameObject != null)
         {
             Destroy(coinGameObject);
+            if (coinPickup != null)
+            {
+                currentSoundSource.PlayOneShot(coinPickup, 1);
+            }
             collectedCoins++;
         }
     }
@@ -51,6 +78,11 @@ public class CharacterInfo : MonoBehaviour
         if (boltGameObject != null)
         {
             Destroy(boltGameObject);
+            
+            if (boltPickup != null)
+            {
+                currentSoundSource.PlayOneShot(boltPickup, 1);
+            }
 
             // call endscreen here 
             UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString());
