@@ -2020,7 +2020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overlayTilePrefab: {fileID: 1186361879}
   overlayContainer: {fileID: 330940879}
-  Ice: {fileID: 11400000, guid: 8f664264919dab24a891cfefdb57d26d, type: 2}
+  iceTile: {fileID: 11400000, guid: 8f664264919dab24a891cfefdb57d26d, type: 2}
+  waterTile: {fileID: 11400000, guid: d6b4813e96518ca4a9a8da9f98ef4dab, type: 2}
   ignoreBottomTiles: 1
 --- !u!156049354 &971235384
 Grid:
@@ -2626,7 +2627,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -5, y: -8, z: 0}
+  - first: {x: -5, y: -8, z: 1}
     second:
       serializedVersion: 2
       m_TileIndex: 4
@@ -2786,7 +2787,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -3, y: -5, z: 0}
+  - first: {x: -3, y: -5, z: 1}
     second:
       serializedVersion: 2
       m_TileIndex: 4
