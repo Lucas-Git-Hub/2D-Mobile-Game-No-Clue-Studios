@@ -29,7 +29,6 @@ public class MouseController : MonoBehaviour
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
-    public TileAnimationFlags testAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -124,7 +123,7 @@ public class MouseController : MonoBehaviour
                     startingTile.isBlocked = true;
                     tileMap.SetTile(startingTile.gridLocation, IceCrackAnimation);
                     character.PlayIceCrackingSound();
-                    RefreshMap();
+                    tileMap.RefreshTile(startingTile.gridLocation);
                 }
                 begin = false;
             }
@@ -134,9 +133,8 @@ public class MouseController : MonoBehaviour
                 // Change Iceblock and refresh the tilemap
                 previousTile.isBlocked = true;
                 tileMap.SetTile(previousTile.gridLocation, IceCrackAnimation);
-                // tileMap.SetTileAnimationFlags(previousTile.gridLocation, testAnimation);
                 character.PlayIceCrackingSound();
-                RefreshMap();
+                tileMap.RefreshTile(previousTile.gridLocation);
             }
             
             // previousTile = path[0];
@@ -150,7 +148,6 @@ public class MouseController : MonoBehaviour
             // GetInRangeTiles();
         }
     }
-
     public void RefreshMap()
     {
         if (tileMap != null)

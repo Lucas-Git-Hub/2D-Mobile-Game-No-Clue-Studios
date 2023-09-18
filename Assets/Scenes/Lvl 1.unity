@@ -2284,6 +2284,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1545538980}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+      propertyPath: loopOnce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: WaterTile
       value: 
       objectReference: {fileID: 11400000, guid: d6b4813e96518ca4a9a8da9f98ef4dab, type: 2}
@@ -2295,6 +2299,10 @@ PrefabInstance:
       propertyPath: spawnLocation
       value: 
       objectReference: {fileID: 942208171}
+    - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+      propertyPath: testAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: characterPrefab
       value: 
