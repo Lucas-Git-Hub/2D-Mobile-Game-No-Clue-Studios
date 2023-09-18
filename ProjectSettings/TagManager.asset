@@ -42,9 +42,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Background
+    uniqueID: 2239510431
+    locked: 0
+  - name: Tilemap
+    uniqueID: 3346749515
+    locked: 0
+  - name: Pickup
+    uniqueID: 2120244047
+    locked: 0
+  - name: Player Character
+    uniqueID: 3885273569
     locked: 0
   - name: Elevation
     uniqueID: 3041617627
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
