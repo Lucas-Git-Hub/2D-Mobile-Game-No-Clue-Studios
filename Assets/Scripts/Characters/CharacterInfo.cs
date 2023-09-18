@@ -12,15 +12,57 @@ public class CharacterInfo : MonoBehaviour
     public AudioClip boltPickup;
     public AudioClip iceCrackSound;
     private AudioSource currentSoundSource;
+    public Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private float previousX;
+    private float previousY;
 
     void Start()
     {
         currentSoundSource = GetComponentInChildren<AudioSource>();
-    }
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
 
+        // Set initial X and Y positions
+        previousX = transform.position.x;
+        previousY = transform.position.y;
+    }
+    
     void Update()
     {
-        
+        // NE = x++ & y++
+        if(transform.position.x > previousX && transform.position.y > previousY)
+        {
+            animator.SetInteger("Direction", 1);
+            spriteRenderer.flipX = true;
+        }
+        // NW = x-- & y++
+        else if(transform.position.x < previousX && transform.position.y > previousY)
+        {
+            animator.SetInteger("Direction", 1);
+            spriteRenderer.flipX = false;
+        }
+        // SE = x++ & y--
+        else if(transform.position.x > previousX && transform.position.y < previousY)
+        {
+            animator.SetInteger("Direction", 2);
+            spriteRenderer.flipX = false;
+        }
+        // SW = x-- & y--  
+        else if(transform.position.x < previousX && transform.position.y < previousY)
+        {
+            animator.SetInteger("Direction", 2);
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+
+            animator.SetInteger("Direction", 0);
+        }
+
+        previousX = transform.position.x;
+        previousY = transform.position.y;
     }
 
     public void PlayIceCrackingSound()

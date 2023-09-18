@@ -29,7 +29,7 @@ public class MouseController : MonoBehaviour
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -136,8 +136,7 @@ public class MouseController : MonoBehaviour
                 character.PlayIceCrackingSound();
                 tileMap.RefreshTile(previousTile.gridLocation);
             }
-            
-            // previousTile = path[0];
+
             path.RemoveAt(0);
         }
 
