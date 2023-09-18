@@ -10,23 +10,12 @@ public class CharacterInfo : MonoBehaviour
     public TMP_Text scoreText;
     public AudioClip coinPickup;
     public AudioClip boltPickup;
-    public AudioClip backgroundMusic;
     public AudioClip iceCrackSound;
-    public bool playBackgroundMusic = false;
     private AudioSource currentSoundSource;
-    public float musicVolume = 0.8f;
 
     void Start()
     {
         currentSoundSource = GetComponentInChildren<AudioSource>();
-
-        if(playBackgroundMusic == true)
-        {
-            currentSoundSource.clip = backgroundMusic;
-            currentSoundSource.volume = musicVolume;
-            currentSoundSource.loop = true;
-            currentSoundSource.Play();
-        }
     }
 
     void Update()

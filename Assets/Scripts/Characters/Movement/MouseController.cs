@@ -25,6 +25,11 @@ public class MouseController : MonoBehaviour
     private OverlayTile startingTile;
     private OverlayTile endTile;
     public OverlayTile spawnLocation;
+    private AudioSource currentSoundSource;
+    public AudioClip backgroundMusic;
+    public bool playBackgroundMusic = false;
+    public float musicVolume = 0.8f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +44,16 @@ public class MouseController : MonoBehaviour
             PositionCharacterOnLine(spawnLocation);
             character.standingOnTile = spawnLocation;
             // GetInRangeTiles();
+        }
+
+        currentSoundSource = GetComponentInChildren<AudioSource>();
+
+        if(playBackgroundMusic == true)
+        {
+            currentSoundSource.clip = backgroundMusic;
+            currentSoundSource.volume = musicVolume;
+            currentSoundSource.loop = true;
+            currentSoundSource.Play();
         }
     }
 
