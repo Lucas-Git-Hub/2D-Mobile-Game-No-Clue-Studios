@@ -154,10 +154,11 @@ public class MouseController : MonoBehaviour
     private IEnumerator CheckAnimationFrame(OverlayTile tile)
     {
         yield return new WaitForSeconds(.8f);
-        
+
         // Change Iceblock to Watertile at the end of the animation
         tileMap.SetTile(tile.gridLocation, WaterTile);
         tileMap.RefreshTile(tile.gridLocation);
+        yield break;
     }
 
     public void RefreshMap()
