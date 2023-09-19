@@ -119,22 +119,14 @@ public class MouseController : MonoBehaviour
             {   
                 if(startingTile.ice == true)
                 {   
-                    // Change Iceblock and refresh the tilemap
-                    startingTile.isBlocked = true;
-                    tileMap.SetTile(startingTile.gridLocation, IceCrackAnimation);
-                    character.PlayIceCrackingSound();
-                    tileMap.RefreshTile(startingTile.gridLocation);
+                    TileAnimation(startingTile);
                 }
                 begin = false;
             }
 
             if(previousTile.ice == true && path[0] != end)
             {   
-                // Change Iceblock and refresh the tilemap
-                previousTile.isBlocked = true;
-                tileMap.SetTile(previousTile.gridLocation, IceCrackAnimation);
-                character.PlayIceCrackingSound();
-                tileMap.RefreshTile(previousTile.gridLocation);
+                TileAnimation(previousTile);
             }
 
             path.RemoveAt(0);
@@ -147,6 +139,27 @@ public class MouseController : MonoBehaviour
             // GetInRangeTiles();
         }
     }
+
+    private void TileAnimation(OverlayTile tile)
+    {
+        // Change Iceblock and refresh the tilemap
+        tile.isBlocked = true;
+        tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        character.PlayIceCrackingSound();
+        tileMap.RefreshTile(tile.gridLocation);
+
+        StartCoroutine(CheckAnimationFrame(tile));
+    }
+
+    private IEnumerator CheckAnimationFrame(OverlayTile tile)
+    {
+        yield return new WaitForSeconds(.8f);
+        
+        // Change Iceblock to Watertile at the end of the animation
+        tileMap.SetTile(tile.gridLocation, WaterTile);
+        tileMap.RefreshTile(tile.gridLocation);
+    }
+
     public void RefreshMap()
     {
         if (tileMap != null)
