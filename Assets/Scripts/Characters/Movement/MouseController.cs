@@ -42,7 +42,6 @@ public class MouseController : MonoBehaviour
         {
             character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
             PositionCharacterOnLine(spawnLocation);
-            character.standingOnTile = spawnLocation;
             // GetInRangeTiles();
         }
 
