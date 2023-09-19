@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
     public Tile iceTile;
-    public Tile waterTile;
+    public TileBase waterTile;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
 
