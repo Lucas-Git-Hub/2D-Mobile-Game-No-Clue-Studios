@@ -1563,7 +1563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &735643452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3973,6 +3973,7 @@ MonoBehaviour:
   LevelStatus: {fileID: 1859710101}
   scoreText: {fileID: 612922036}
   PauseButton: {fileID: 493475853}
+  levelIndex: 1
 --- !u!114 &1875057489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3989,6 +3990,7 @@ MonoBehaviour:
   - {fileID: 1161035084}
   - {fileID: 916422832}
   - {fileID: 624061076}
+  NextLvl: {fileID: 735643451}
 --- !u!1001 &2009263193
 PrefabInstance:
   m_ObjectHideFlags: 0
