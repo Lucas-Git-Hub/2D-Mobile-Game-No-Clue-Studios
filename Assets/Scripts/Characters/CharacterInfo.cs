@@ -116,7 +116,7 @@ public class CharacterInfo : MonoBehaviour
             }
 
             // call endscreen here 
-            UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString());
+            UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString(), collectedCoins);
         }
     }  
 
