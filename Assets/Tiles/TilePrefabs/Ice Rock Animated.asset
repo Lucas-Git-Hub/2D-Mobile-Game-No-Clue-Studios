@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Ice Rock Animated
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: -180823701, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 722095844, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -574900178, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 433949982, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 417030638, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -1190696239, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -738168874, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 1387486957, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 72990038, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -146518187, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 57194246, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 1668763155, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 1611300213, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -1751407950, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: 1423520072, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  - {fileID: -445210945, guid: 5b83c284bde6d554e915e48f19419353, type: 3}
+  m_MinSpeed: 8
+  m_MaxSpeed: 8
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0

@@ -10,16 +10,19 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance { get { return _instance; } }
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
-    public Tile Ice;
+    public Tile iceTile;
+    public TileBase waterTile;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
-    
+
     private void Awake()
     {
         if(_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-        } else {
+        }
+        else
+        {
             _instance = this;
         }
     }
@@ -32,19 +35,19 @@ public class MapManager : MonoBehaviour
         BoundsInt bounds = tileMap.cellBounds;
 
         //Looping through all our tiles
-        for(int z = bounds.max.z; z >= bounds.min.z; z--)
+        for (int z = bounds.max.z; z >= bounds.min.z; z--)
         {
-            for(int y = bounds.min.y; y < bounds.max.y; y++)
+            for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
-                for(int x = bounds.min.x; x < bounds.max.x; x++)
+                for (int x = bounds.min.x; x < bounds.max.x; x++)
                 {
                     if (z == 0 && ignoreBottomTiles)
                         return;
-                    
+
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
-                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
+                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey) && tileMap.GetTile(tileLocation) != waterTile)
                     {
                         var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
@@ -53,7 +56,7 @@ public class MapManager : MonoBehaviour
                         overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
                         overlayTile.gridLocation = tileLocation;
                         // Checks if its an ice block that's able to melt
-                        if(tileMap.GetTile(tileLocation) == Ice)
+                        if (tileMap.GetTile(tileLocation) == iceTile)
                         {
                             overlayTile.ice = true;
                         }
@@ -75,10 +78,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.x,
             currentOverlayTile.gridLocation.y + 1
             );
-        
+
         if (map.ContainsKey(locationToCheck))
         {
-            if(Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
                 neighbours.Add(map[locationToCheck]);
         }
 
@@ -87,10 +90,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.x,
             currentOverlayTile.gridLocation.y - 1
             );
-        
+
         if (map.ContainsKey(locationToCheck))
         {
-            if(Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
                 neighbours.Add(map[locationToCheck]);
         }
 
@@ -99,10 +102,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.x + 1,
             currentOverlayTile.gridLocation.y
             );
-        
+
         if (map.ContainsKey(locationToCheck))
         {
-            if(Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
                 neighbours.Add(map[locationToCheck]);
         }
 
@@ -111,13 +114,14 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.x - 1,
             currentOverlayTile.gridLocation.y
             );
-        
+
         if (map.ContainsKey(locationToCheck))
         {
-            if(Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
                 neighbours.Add(map[locationToCheck]);
         }
 
         return neighbours;
     }
 }
+
