@@ -214,7 +214,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Lvl 2
+          m_StringArgument: Lvl 4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &50794605
@@ -2253,6 +2253,7 @@ MonoBehaviour:
   - {fileID: 288302761}
   - {fileID: 326044722}
   - {fileID: 923127463}
+  NextLvl: {fileID: 50794602}
 --- !u!114 &1402509196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2269,6 +2270,7 @@ MonoBehaviour:
   LevelStatus: {fileID: 1040892808}
   scoreText: {fileID: 1122666590}
   PauseButton: {fileID: 2126504519}
+  levelIndex: 0
 --- !u!4 &1402509197
 Transform:
   m_ObjectHideFlags: 0
