@@ -10,13 +10,14 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance { get { return _instance; } }
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
-    public Tile Ice;
+    public Tile iceTile;
+    public TileBase waterTile;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if(_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
         }
@@ -46,7 +47,7 @@ public class MapManager : MonoBehaviour
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
-                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
+                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey) && tileMap.GetTile(tileLocation) != waterTile)
                     {
                         var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
@@ -55,7 +56,7 @@ public class MapManager : MonoBehaviour
                         overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
                         overlayTile.gridLocation = tileLocation;
                         // Checks if its an ice block that's able to melt
-                        if (tileMap.GetTile(tileLocation) == Ice)
+                        if (tileMap.GetTile(tileLocation) == iceTile)
                         {
                             overlayTile.ice = true;
                         }

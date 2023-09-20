@@ -13,7 +13,8 @@ public class MouseController : MonoBehaviour
     public float speed;
     private Touch touch;
     public GameObject characterPrefab;
-    public TileBase IceCrackTile;
+    public TileBase WaterTile;
+    public TileBase IceCrackAnimation;
     private CharacterInfo character;
     private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
@@ -24,6 +25,11 @@ public class MouseController : MonoBehaviour
     private OverlayTile startingTile;
     private OverlayTile endTile;
     public OverlayTile spawnLocation;
+    private AudioSource currentSoundSource;
+    public AudioClip backgroundMusic;
+    public bool playBackgroundMusic = false;
+    public float musicVolume = 0.8f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +37,22 @@ public class MouseController : MonoBehaviour
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
 
-        //if character isnt spawned in spawn him in on click, else move the character
+        //if character isnt spawned in spawn him in
         if (character == null)
         {
             character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
             PositionCharacterOnLine(spawnLocation);
-            character.standingOnTile = spawnLocation;
             // GetInRangeTiles();
+        }
+
+        currentSoundSource = GetComponentInChildren<AudioSource>();
+
+        if(playBackgroundMusic == true)
+        {
+            currentSoundSource.clip = backgroundMusic;
+            currentSoundSource.volume = musicVolume;
+            currentSoundSource.loop = true;
+            currentSoundSource.Play();
         }
     }
 
@@ -103,23 +118,16 @@ public class MouseController : MonoBehaviour
             {   
                 if(startingTile.ice == true)
                 {   
-                    // Change Iceblock and refresh the tilemap
-                    tileMap.SetTile(startingTile.gridLocation, IceCrackTile);
-                    RefreshMap();
-                    startingTile.isBlocked = true;
+                    TileAnimation(startingTile);
                 }
                 begin = false;
             }
 
             if(previousTile.ice == true && path[0] != end)
             {   
-                // Change Iceblock and refresh the tilemap
-                tileMap.SetTile(previousTile.gridLocation, IceCrackTile);
-                RefreshMap();
-                previousTile.isBlocked = true;
+                TileAnimation(previousTile);
             }
-            
-            // previousTile = path[0];
+
             path.RemoveAt(0);
         }
 
@@ -129,6 +137,27 @@ public class MouseController : MonoBehaviour
             endTile = character.standingOnTile;
             // GetInRangeTiles();
         }
+    }
+
+    private void TileAnimation(OverlayTile tile)
+    {
+        // Change Iceblock and refresh the tilemap
+        tile.isBlocked = true;
+        tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        character.PlayIceCrackingSound();
+        tileMap.RefreshTile(tile.gridLocation);
+
+        StartCoroutine(CheckAnimationFrame(tile));
+    }
+
+    private IEnumerator CheckAnimationFrame(OverlayTile tile)
+    {
+        yield return new WaitForSeconds(.8f);
+
+        // Change Iceblock to Watertile at the end of the animation
+        tileMap.SetTile(tile.gridLocation, WaterTile);
+        tileMap.RefreshTile(tile.gridLocation);
+        yield break;
     }
 
     public void RefreshMap()
