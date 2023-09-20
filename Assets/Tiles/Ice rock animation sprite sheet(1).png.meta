@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8ae4aa67be41e2b4dacec28ada8286b6
+guid: 5b83c284bde6d554e915e48f19419353
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_0
+      name: Ice rock animation sprite sheet(1)_0
       rect:
         serializedVersion: 2
         x: 2
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fac97bf9fc2a7243a7e2e160561731e
-      internalID: -2143577709
+      spriteID: 1e1e5d3558b4b0645b3ed15f239d47b3
+      internalID: -180823701
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_1
+      name: Ice rock animation sprite sheet(1)_1
       rect:
         serializedVersion: 2
         x: 34
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 133077d2b50d0ab4b8a4be81b5c9b88c
-      internalID: -1178223494
+      spriteID: fec4e5e39fb22eb48bce0de96cf40477
+      internalID: 722095844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_2
+      name: Ice rock animation sprite sheet(1)_2
       rect:
         serializedVersion: 2
         x: 66
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bd897aa2a4299f4c98a5351520c6889
-      internalID: -224310658
+      spriteID: e492211e899862b439f1002bfec628ba
+      internalID: -574900178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_3
+      name: Ice rock animation sprite sheet(1)_3
       rect:
         serializedVersion: 2
         x: 98
@@ -200,19 +200,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8175eecda6e5f524fa83199322439dee
-      internalID: 2089485155
+      spriteID: 78ef488e70d10e04cbb7053fecae72b3
+      internalID: 433949982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_4
+      name: Ice rock animation sprite sheet(1)_4
       rect:
         serializedVersion: 2
-        x: 129
+        x: 130
         y: 62
-        width: 29
+        width: 28
         height: 30
       alignment: 9
       pivot: {x: 0.5, y: 0.75}
@@ -221,19 +221,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25479fec6ac3a4a4998b99d37621c689
-      internalID: -876855258
+      spriteID: 9b500d9f8d66fac428e881f513373dc5
+      internalID: 417030638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_5
+      name: Ice rock animation sprite sheet(1)_5
       rect:
         serializedVersion: 2
-        x: 161
+        x: 162
         y: 62
-        width: 29
+        width: 28
         height: 30
       alignment: 9
       pivot: {x: 0.5, y: 0.75}
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dc544de1c198594aa0762726865ff48
-      internalID: -303749952
+      spriteID: 46b9f6683dc4dfa4c92ed427a003c230
+      internalID: -1190696239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_6
+      name: Ice rock animation sprite sheet(1)_6
       rect:
         serializedVersion: 2
         x: 194
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbd7d41a7295748478c16096e638b320
-      internalID: -1137780407
+      spriteID: 1b1dcd6b66d57ce4aa32114a7aa26b0a
+      internalID: -738168874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_7
+      name: Ice rock animation sprite sheet(1)_7
       rect:
         serializedVersion: 2
         x: 226
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 309cdac3b18c029469ab1f173dc47c8b
-      internalID: 1639478913
+      spriteID: 804103f33b31c7e42be830f44277438c
+      internalID: 1387486957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_8
+      name: Ice rock animation sprite sheet(1)_8
       rect:
         serializedVersion: 2
         x: 2
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 923182941720e134885db2fea1303fa6
-      internalID: 33241206
+      spriteID: 1fa0d8fb492ad57418aecf7d25c6e4e3
+      internalID: 72990038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_9
+      name: Ice rock animation sprite sheet(1)_9
       rect:
         serializedVersion: 2
         x: 34
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 601dedfcecfcdaf40b716ba73226d9a7
-      internalID: -1940618157
+      spriteID: ff60192a9409cc546aff1e4f110f8b2d
+      internalID: -146518187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_10
+      name: Ice rock animation sprite sheet(1)_10
       rect:
         serializedVersion: 2
         x: 66
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bae025f489fe50248b7aa336a529141d
-      internalID: 1124883469
+      spriteID: 11bd45e8ef4529c4189d4f6e88fa87d9
+      internalID: 57194246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_11
+      name: Ice rock animation sprite sheet(1)_11
       rect:
         serializedVersion: 2
         x: 98
@@ -368,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caa5dbf6a5783714cb90c2030fcaabc5
-      internalID: 711553306
+      spriteID: bb697b8ec5665a14ab601cacac252890
+      internalID: 1668763155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_12
+      name: Ice rock animation sprite sheet(1)_12
       rect:
         serializedVersion: 2
         x: 130
@@ -389,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dab36f1ce75e6854c8babce5e7eaa0fd
-      internalID: 1356323557
+      spriteID: 82a51e36e61880946af1564ed9bdd8b8
+      internalID: 1611300213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_13
+      name: Ice rock animation sprite sheet(1)_13
       rect:
         serializedVersion: 2
         x: 163
@@ -410,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f17ec8aec8d8aaf4fab22c7647cb6c29
-      internalID: -544760712
+      spriteID: 4b799d89aac9bd64683b208a24f4870a
+      internalID: -1751407950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_14
+      name: Ice rock animation sprite sheet(1)_14
       rect:
         serializedVersion: 2
         x: 194
@@ -431,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a25084c597b4add4ab87092d25e41071
-      internalID: -301383757
+      spriteID: 85b03fd9eb6f71847b5c033adae86505
+      internalID: 1423520072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ice rock animation sprite sheet_15
+      name: Ice rock animation sprite sheet(1)_15
       rect:
         serializedVersion: 2
         x: 226
@@ -452,8 +452,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d144eef9394550e41aa461aa7b2864d7
-      internalID: 958401232
+      spriteID: b84801d6fb9a8904cbbc5d863e1aff9e
+      internalID: -445210945
       vertices: []
       indices: 
       edges: []
@@ -469,22 +469,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ice rock animation sprite sheet_0: -2143577709
-      Ice rock animation sprite sheet_1: -1178223494
-      Ice rock animation sprite sheet_10: 1124883469
-      Ice rock animation sprite sheet_11: 711553306
-      Ice rock animation sprite sheet_12: 1356323557
-      Ice rock animation sprite sheet_13: -544760712
-      Ice rock animation sprite sheet_14: -301383757
-      Ice rock animation sprite sheet_15: 958401232
-      Ice rock animation sprite sheet_2: -224310658
-      Ice rock animation sprite sheet_3: 2089485155
-      Ice rock animation sprite sheet_4: -876855258
-      Ice rock animation sprite sheet_5: -303749952
-      Ice rock animation sprite sheet_6: -1137780407
-      Ice rock animation sprite sheet_7: 1639478913
-      Ice rock animation sprite sheet_8: 33241206
-      Ice rock animation sprite sheet_9: -1940618157
+      Ice rock animation sprite sheet(1)_0: -180823701
+      Ice rock animation sprite sheet(1)_1: 722095844
+      Ice rock animation sprite sheet(1)_10: 57194246
+      Ice rock animation sprite sheet(1)_11: 1668763155
+      Ice rock animation sprite sheet(1)_12: 1611300213
+      Ice rock animation sprite sheet(1)_13: -1751407950
+      Ice rock animation sprite sheet(1)_14: 1423520072
+      Ice rock animation sprite sheet(1)_15: -445210945
+      Ice rock animation sprite sheet(1)_2: -574900178
+      Ice rock animation sprite sheet(1)_3: 433949982
+      Ice rock animation sprite sheet(1)_4: 417030638
+      Ice rock animation sprite sheet(1)_5: -1190696239
+      Ice rock animation sprite sheet(1)_6: -738168874
+      Ice rock animation sprite sheet(1)_7: 1387486957
+      Ice rock animation sprite sheet(1)_8: 72990038
+      Ice rock animation sprite sheet(1)_9: -146518187
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
