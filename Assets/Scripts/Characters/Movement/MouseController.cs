@@ -179,6 +179,8 @@ public class MouseController : MonoBehaviour
             {
                 //When a touch has first been detected, change the message and record the starting position
                 case (UnityEngine.TouchPhase)UnityEngine.InputSystem.TouchPhase.Began:
+                    break;
+                case (UnityEngine.TouchPhase)UnityEngine.InputSystem.TouchPhase.Ended:
                     // Record initial touch position.
                     Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
                     Vector2 touchPos2d = new Vector2(touchPos.x, touchPos.y);
@@ -189,9 +191,6 @@ public class MouseController : MonoBehaviour
                     {
                         return hits.OrderByDescending(i => i.collider.transform.position.z).First();
                     }
-                    break;
-                case (UnityEngine.TouchPhase)UnityEngine.InputSystem.TouchPhase.Ended:
-                    // Report that the touch has ended when it ends
                     break;
             }
         }
