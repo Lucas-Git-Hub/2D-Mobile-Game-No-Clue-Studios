@@ -156,7 +156,7 @@ MonoBehaviour:
   standingOnTile: {fileID: 0}
   collectedCoins: 0
   scoreText: {fileID: 0}
-  coinPickup: {fileID: 8300000, guid: 79700bb875cfb9e43a8cb97e778660f6, type: 3}
+  coinPickup: {fileID: 8300000, guid: 9218afad7994c67459bb248cc161ad40, type: 3}
   boltPickup: {fileID: 8300000, guid: 651cd20794c40c44fae3d7c2ae071d7c, type: 3}
   iceCrackSound: {fileID: 8300000, guid: 1d8c109f5beea0b44a473c82715c8cb3, type: 3}
   animator: {fileID: 1781773719399280821}
