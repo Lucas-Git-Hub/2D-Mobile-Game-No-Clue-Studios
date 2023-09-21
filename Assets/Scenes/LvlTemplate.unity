@@ -3340,6 +3340,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+--- !u!1 &2095173146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7109601804384386838, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+  m_PrefabInstance: {fileID: 2095173145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108260104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,6 +3379,7 @@ MonoBehaviour:
   - {fileID: 1507035396}
   - {fileID: 1575427269}
   - {fileID: 675386150}
+  NextLvl: {fileID: 0}
 --- !u!114 &2108260106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3390,6 +3396,8 @@ MonoBehaviour:
   LevelStatus: {fileID: 1469969455}
   scoreText: {fileID: 1184568174}
   PauseButton: {fileID: 260378597}
+  levelIndex: 0
+  cursor: {fileID: 2095173146}
 --- !u!4 &2108260107
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class UIHandler : MonoBehaviour
     public TMP_Text scoreText;
     public GameObject PauseButton;
     public int levelIndex;
+    public GameObject cursor;
 
     public static UIHandler instance;
 
@@ -22,6 +23,7 @@ public class UIHandler : MonoBehaviour
     public void ShowLevelDialog(string status, string scores, int gears)
 
     {
+        cursor.SetActive(false);
         GetComponent<GearsHandler>().gearsAchieved();
         LevelDialog.SetActive(true);
         LevelStatus.text = status;
