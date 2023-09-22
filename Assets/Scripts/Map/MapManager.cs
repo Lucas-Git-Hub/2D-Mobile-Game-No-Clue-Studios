@@ -11,6 +11,8 @@ public class MapManager : MonoBehaviour
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
     public Tile iceTile;
+    public Tile packedIceTile;
+    public Tile blackIceTile;
     public TileBase waterTile;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
@@ -42,8 +44,10 @@ public class MapManager : MonoBehaviour
                 for (int x = bounds.min.x; x < bounds.max.x; x++)
                 {
                     if (z == 0 && ignoreBottomTiles)
+                    {
                         return;
-
+                    }
+                    
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
@@ -59,6 +63,15 @@ public class MapManager : MonoBehaviour
                         if (tileMap.GetTile(tileLocation) == iceTile)
                         {
                             overlayTile.ice = true;
+                            overlayTile.hp = 1;
+                        } else if (tileMap.GetTile(tileLocation) == packedIceTile)
+                        {
+                            overlayTile.ice = true;
+                            overlayTile.hp = 2;
+                        } else if (tileMap.GetTile(tileLocation) == blackIceTile)
+                        {
+                            overlayTile.ice = true;
+                            overlayTile.hp = 3;
                         }
                         map.Add(tileKey, overlayTile);
                     }

@@ -29,6 +29,8 @@ public class MouseController : MonoBehaviour
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
+
+    public MapManager mapManager;
     
     // Start is called before the first frame update
     void Start()
@@ -118,14 +120,14 @@ public class MouseController : MonoBehaviour
             {   
                 if(startingTile.ice == true)
                 {   
-                    TileAnimation(startingTile);
+                    IceTileChecker(startingTile);
                 }
                 begin = false;
             }
 
             if(previousTile.ice == true && path[0] != end)
             {   
-                TileAnimation(previousTile);
+                IceTileChecker(previousTile);
             }
 
             path.RemoveAt(0);
@@ -139,18 +141,63 @@ public class MouseController : MonoBehaviour
         }
     }
 
+    private void IceTileUpdater(OverlayTile tile)
+    {
+        tile.hp -= 1;
+        // tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        character.PlayIceCrackingSound();
+        // tileMap.RefreshTile(tile.gridLocation);
+        Debug.Log("Hp: " + tile.hp + "Tile: "+ tileMap.GetTile(tile.gridLocation));
+    }
+    private void IceTileChecker(OverlayTile tile)
+    {
+        // Change Iceblock and refresh the tilemap 
+        if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
+        {
+            IceTileUpdater(tile);
+        } else if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == mapManager.blackIceTile)
+        {
+            IceTileUpdater(tile);
+        } else if(tile.hp == 3)
+        {
+            IceTileUpdater(tile);
+        } else 
+        {
+            TileAnimation(tile);
+        }
+    }
     private void TileAnimation(OverlayTile tile)
     {
-        // Change Iceblock and refresh the tilemap
-        tile.isBlocked = true;
-        tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-        character.PlayIceCrackingSound();
-        tileMap.RefreshTile(tile.gridLocation);
+        // if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
+        // {
+        //     tile.hp -= 1;
+        //     tile.isBlocked = true;
+        //     tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        //     character.PlayIceCrackingSound();
+        //     tileMap.RefreshTile(tile.gridLocation);
 
-        StartCoroutine(CheckAnimationFrame(tile));
+        //     StartCoroutine(PlayTileAnimationAfterDelay(tile));
+        // } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.blackIceTile)
+        // {
+        //     tile.hp -= 1;
+        //     tile.isBlocked = true;
+        //     tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        //     character.PlayIceCrackingSound();
+        //     tileMap.RefreshTile(tile.gridLocation);
+
+        //     StartCoroutine(PlayTileAnimationAfterDelay(tile));
+        // } else
+        // {
+            tile.isBlocked = true;
+            tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+            character.PlayIceCrackingSound();
+            tileMap.RefreshTile(tile.gridLocation);
+
+            StartCoroutine(PlayTileAnimationAfterDelay(tile));
+        // }
     }
 
-    private IEnumerator CheckAnimationFrame(OverlayTile tile)
+    private IEnumerator PlayTileAnimationAfterDelay(OverlayTile tile)
     {
         yield return new WaitForSeconds(.8f);
 

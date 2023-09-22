@@ -11,10 +11,10 @@ public class OverlayTile : MonoBehaviour
 
     public bool isBlocked = false;
     public bool ice = false;
+    public int hp;
+    
     public OverlayTile previous;
-
     public Vector3Int gridLocation;
-
 
     public void ShowTile()
     {
