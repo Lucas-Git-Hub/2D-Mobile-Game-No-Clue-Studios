@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LevelData : MonoBehaviour
+public class ResetButton : MonoBehaviour
 {
-    public GameObject b_Gear;
-    private GameObject s_Gear;
-    private GameObject g_Gear;
-
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("Lvl" + 1));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+
     }
 }
