@@ -143,7 +143,13 @@ public class MouseController : MonoBehaviour
     {
         tile.hp -= 1;
         // tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-        character.PlayIceCrackingSound();
+        if(tile.hp == 1)
+        {
+            character.PlayIceAlmostBreakingSound();
+        } else if(tile.hp == 2)
+        {
+            character.PlayIceCrackingSound();
+        }
         // tileMap.RefreshTile(tile.gridLocation);
         // Debug.Log("Hp: " + tile.hp + " Tile: "+ tileMap.GetTile(tile.gridLocation));
     }
@@ -189,7 +195,7 @@ public class MouseController : MonoBehaviour
         // {
             tile.isBlocked = true;
             tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-            character.PlayIceCrackingSound();
+            character.PlayIceBreakingSound();
             tileMap.RefreshTile(tile.gridLocation);
 
             StartCoroutine(PlayTileAnimationAfterDelay(tile));

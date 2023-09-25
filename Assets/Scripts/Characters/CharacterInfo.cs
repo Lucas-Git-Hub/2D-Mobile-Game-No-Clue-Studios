@@ -11,6 +11,8 @@ public class CharacterInfo : MonoBehaviour
     public AudioClip coinPickup;
     public AudioClip boltPickup;
     public AudioClip iceCrackSound;
+    public AudioClip iceAlmostBreakSound;
+    public AudioClip iceBreakSound;
     private AudioSource currentSoundSource;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -70,6 +72,20 @@ public class CharacterInfo : MonoBehaviour
         if(iceCrackSound != null)
         {
             currentSoundSource.PlayOneShot(iceCrackSound, 1);
+        }
+    }
+    public void PlayIceAlmostBreakingSound()
+    {
+        if(iceAlmostBreakSound != null)
+        {
+            currentSoundSource.PlayOneShot(iceAlmostBreakSound, 1);
+        }
+    }
+    public void PlayIceBreakingSound()
+    {
+        if(iceBreakSound != null)
+        {
+            currentSoundSource.PlayOneShot(iceBreakSound, 1);
         }
     }
 
