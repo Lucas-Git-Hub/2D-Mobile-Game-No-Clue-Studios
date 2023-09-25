@@ -15,6 +15,9 @@ public class MouseController : MonoBehaviour
     public GameObject characterPrefab;
     public TileBase WaterTile;
     public TileBase IceCrackAnimation;
+    public TileBase PackedIceCracked;
+    public TileBase BlackIceCracked1;
+    public TileBase BlackIceCracked2;
     private CharacterInfo character;
     private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
@@ -93,7 +96,7 @@ public class MouseController : MonoBehaviour
             item.HideTile();
         }
         
-        inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 15);
+        inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 3);
 
         foreach(var item in inRangeTiles)
         {
@@ -142,16 +145,19 @@ public class MouseController : MonoBehaviour
     private void IceTileUpdater(OverlayTile tile)
     {
         tile.hp -= 1;
-        // tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-        if(tile.hp == 1)
+        if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
         {
+            TileCrack(tile, PackedIceCracked);
+            character.PlayIceAlmostBreakingSound();
+        } else if (tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked1)
+        {
+            TileCrack(tile, BlackIceCracked2);
             character.PlayIceAlmostBreakingSound();
         } else if(tile.hp == 2)
         {
+            TileCrack(tile, BlackIceCracked1);
             character.PlayIceCrackingSound();
         }
-        // tileMap.RefreshTile(tile.gridLocation);
-        // Debug.Log("Hp: " + tile.hp + " Tile: "+ tileMap.GetTile(tile.gridLocation));
     }
     private void IceTileChecker(OverlayTile tile)
     {
@@ -159,7 +165,7 @@ public class MouseController : MonoBehaviour
         if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
         {
             IceTileUpdater(tile);
-        } else if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == mapManager.blackIceTile)
+        } else if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked1)
         {
             IceTileUpdater(tile);
         } else if(tile.hp == 3)
@@ -168,38 +174,23 @@ public class MouseController : MonoBehaviour
         } else if(tile.hp == 1)
         {
             IceTileUpdater(tile);
-            TileAnimation(tile);
+            TileAnimation(tile, IceCrackAnimation);
         }
     }
-    private void TileAnimation(OverlayTile tile)
+
+    private void TileCrack(OverlayTile tile, TileBase tileBase)
     {
-        // if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
-        // {
-        //     tile.hp -= 1;
-        //     tile.isBlocked = true;
-        //     tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-        //     character.PlayIceCrackingSound();
-        //     tileMap.RefreshTile(tile.gridLocation);
+        tileMap.SetTile(tile.gridLocation, tileBase);
+        tileMap.RefreshTile(tile.gridLocation);
+    }
+    private void TileAnimation(OverlayTile tile, TileBase tileBase)
+    {
+        tile.isBlocked = true;
+        tileMap.SetTile(tile.gridLocation, tileBase);
+        character.PlayIceBreakingSound();
+        tileMap.RefreshTile(tile.gridLocation);
 
-        //     StartCoroutine(PlayTileAnimationAfterDelay(tile));
-        // } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.blackIceTile)
-        // {
-        //     tile.hp -= 1;
-        //     tile.isBlocked = true;
-        //     tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-        //     character.PlayIceCrackingSound();
-        //     tileMap.RefreshTile(tile.gridLocation);
-
-        //     StartCoroutine(PlayTileAnimationAfterDelay(tile));
-        // } else
-        // {
-            tile.isBlocked = true;
-            tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
-            character.PlayIceBreakingSound();
-            tileMap.RefreshTile(tile.gridLocation);
-
-            StartCoroutine(PlayTileAnimationAfterDelay(tile));
-        // }
+        StartCoroutine(PlayTileAnimationAfterDelay(tile));
     }
 
     private IEnumerator PlayTileAnimationAfterDelay(OverlayTile tile)
