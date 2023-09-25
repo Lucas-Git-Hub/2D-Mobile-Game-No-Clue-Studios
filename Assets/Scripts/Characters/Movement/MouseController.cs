@@ -22,7 +22,7 @@ public class MouseController : MonoBehaviour
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
     public Tilemap tileMap;
-    private OverlayTile startingTile;
+    private OverlayTile startTile;
     private OverlayTile endTile;
     public OverlayTile spawnLocation;
     private AudioSource currentSoundSource;
@@ -72,8 +72,8 @@ public class MouseController : MonoBehaviour
 
                 overlayTile.ShowTile();
 
+                startTile = character.standingOnTile;
                 endTile = overlayTile;
-                startingTile = character.standingOnTile;
                 path = pathFinder.FindPath(character.standingOnTile, overlayTile);
 
                 overlayTile.HideTile();
@@ -82,7 +82,7 @@ public class MouseController : MonoBehaviour
 
         if(path.Count > 0 && endTile != null)
         {   
-            MoveAlongPath(startingTile, endTile);
+            StartCoroutine(MoveAlongPath(startTile, endTile));
         }
     }
 
@@ -101,11 +101,10 @@ public class MouseController : MonoBehaviour
         }
     }
 
-    private void MoveAlongPath(OverlayTile startingTile, OverlayTile end)
+    private IEnumerator MoveAlongPath(OverlayTile startingTile, OverlayTile end)
     {
         var step = speed * Time.deltaTime;
         var previousTile = path[0];
-        bool begin = true;
 
         float zIndex = path[0].transform.position.z;
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
@@ -114,18 +113,15 @@ public class MouseController : MonoBehaviour
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {   
-            PositionCharacterOnLine(path[0]);
-
-            if(begin)
+            if(startingTile.ice == true && startingTile != previousTile)
             {   
-                if(startingTile.ice == true)
-                {   
-                    IceTileChecker(startingTile);
-                }
-                begin = false;
+                IceTileChecker(startingTile);
+                startTile = spawnLocation;
             }
 
-            if(previousTile.ice == true && path[0] != end)
+            PositionCharacterOnLine(path[0]);
+
+            if(previousTile.ice == true && previousTile != end && previousTile != startingTile)
             {   
                 IceTileChecker(previousTile);
             }
@@ -136,9 +132,11 @@ public class MouseController : MonoBehaviour
         //Show current available path for player character after moving
         if(path.Count == 0)
         {
-            endTile = character.standingOnTile;
+            endTile = spawnLocation;
             // GetInRangeTiles();
+            StopCoroutine(MoveAlongPath(character.standingOnTile, endTile));
         }
+        yield return null;
     }
 
     private void IceTileUpdater(OverlayTile tile)
@@ -147,7 +145,7 @@ public class MouseController : MonoBehaviour
         // tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
         character.PlayIceCrackingSound();
         // tileMap.RefreshTile(tile.gridLocation);
-        Debug.Log("Hp: " + tile.hp + "Tile: "+ tileMap.GetTile(tile.gridLocation));
+        // Debug.Log("Hp: " + tile.hp + " Tile: "+ tileMap.GetTile(tile.gridLocation));
     }
     private void IceTileChecker(OverlayTile tile)
     {
@@ -161,8 +159,9 @@ public class MouseController : MonoBehaviour
         } else if(tile.hp == 3)
         {
             IceTileUpdater(tile);
-        } else 
+        } else if(tile.hp == 1)
         {
+            IceTileUpdater(tile);
             TileAnimation(tile);
         }
     }
