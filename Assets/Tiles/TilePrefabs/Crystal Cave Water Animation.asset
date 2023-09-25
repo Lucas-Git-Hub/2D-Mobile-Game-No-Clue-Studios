@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Crystal Cave Water Animation
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 1949339501, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: 920303018, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: -46771039, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: 497400173, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: 1560123165, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: 1829502319, guid: fe166959000709048815451c645cf925, type: 3}
-  - {fileID: 108457069, guid: fe166959000709048815451c645cf925, type: 3}
+  - {fileID: 843526586, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: -1401310852, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: 1553305051, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: 1341652065, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: -1786072335, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: -86483290, guid: 92593583341194d42937c5bdd2066e14, type: 3}
+  - {fileID: 740446597, guid: 92593583341194d42937c5bdd2066e14, type: 3}
   m_MinSpeed: 5
   m_MaxSpeed: 5
   m_AnimationStartTime: 0
