@@ -32,7 +32,6 @@ public class MouseController : MonoBehaviour
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
-
     public MapManager mapManager;
     
     // Start is called before the first frame update
