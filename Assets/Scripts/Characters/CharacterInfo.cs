@@ -32,39 +32,43 @@ public class CharacterInfo : MonoBehaviour
     
     void Update()
     {
+        WalkDirection();
+
+        previousX = transform.position.x;
+        previousY = transform.position.y;
+    }
+
+    private void WalkDirection()
+    {
         // NE = x++ & y++
         if(transform.position.x > previousX && transform.position.y > previousY)
         {
-            animator.SetInteger("Direction", 1);
             spriteRenderer.flipX = true;
+            animator.SetInteger("Direction", 1);
         }
         // NW = x-- & y++
         else if(transform.position.x < previousX && transform.position.y > previousY)
         {
-            animator.SetInteger("Direction", 1);
             spriteRenderer.flipX = false;
+            animator.SetInteger("Direction", 1);
         }
         // SE = x++ & y--
         else if(transform.position.x > previousX && transform.position.y < previousY)
         {
-            animator.SetInteger("Direction", 2);
             spriteRenderer.flipX = false;
+            animator.SetInteger("Direction", 2);
         }
         // SW = x-- & y--  
         else if(transform.position.x < previousX && transform.position.y < previousY)
         {
-            animator.SetInteger("Direction", 2);
             spriteRenderer.flipX = true;
+            animator.SetInteger("Direction", 2);
         }
-        else
+        else if(transform.position.x == previousX && transform.position.y == previousY)
         {
             spriteRenderer.flipX = false;
-
             animator.SetInteger("Direction", 0);
         }
-
-        previousX = transform.position.x;
-        previousY = transform.position.y;
     }
 
     public void PlayIceCrackingSound()

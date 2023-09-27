@@ -15,6 +15,7 @@ public class OverlayTile : MonoBehaviour
     
     public OverlayTile previous;
     public Vector3Int gridLocation;
+    public Vector2Int grid2DLocation { get  { return new Vector2Int(gridLocation.x, gridLocation.y); } }
 
     public void ShowTile()
     {

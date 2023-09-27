@@ -640,6 +640,9 @@ MonoBehaviour:
   blackIceTile: {fileID: 11400000, guid: 72979c994bb45f34bb7d2930739c6810, type: 2}
   waterTile: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
   ignoreBottomTiles: 1
+  spawnlocationxyz: {x: 0, y: -3, z: 1}
+  spawnLocationTilekey: {x: 0, y: 0}
+  spawnLocation: {fileID: 0}
 --- !u!1 &453738107
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,17 +967,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665662884}
   m_CullTransparentMesh: 1
---- !u!114 &673183379 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-  m_PrefabInstance: {fileID: 373948899879752395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9040af9c94e6d94cb595600a7887fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &689069374
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,8 +2635,8 @@ Tilemap:
   - first: {x: 0, y: -3, z: 1}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2964,7 +2956,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: c63a8d8b0d9076a42805376694556ebd, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 72979c994bb45f34bb7d2930739c6810, type: 2}
@@ -2972,14 +2964,14 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 81c7e645f3f40fa4d8579dc3c93158e4, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
-  - m_RefCount: 14
+  - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: 8f664264919dab24a891cfefdb57d26d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
+  - m_RefCount: 1
     m_Data: {fileID: -1867837581, guid: c869276315ee0b045afd54d4d6b1c42e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1186252277, guid: 4733add2b4c20164e8ef52b7f3c6b930, type: 3}
@@ -2987,7 +2979,7 @@ Tilemap:
     m_Data: {fileID: -1378521026, guid: 4733add2b4c20164e8ef52b7f3c6b930, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: -802160362, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - m_RefCount: 14
+  - m_RefCount: 15
     m_Data: {fileID: 1173251348, guid: 48d049c24732f8745af0a20244166f5f, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 25
@@ -3062,7 +3054,7 @@ PrefabInstance:
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: spawnLocation
       value: 
-      objectReference: {fileID: 673183379}
+      objectReference: {fileID: 0}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: backgroundMusic
       value: 
@@ -3606,71 +3598,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c246c2d01e1165a4c95a195dd3c3f51d, type: 3}
---- !u!1001 &373948899879752395
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: gridLocation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: gridLocation.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586195700067270005, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_Name
-      value: SpawnLocation
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3680,7 +3607,6 @@ SceneRoots:
   - {fileID: 542785972}
   - {fileID: 1421332298}
   - {fileID: 1366629784}
-  - {fileID: 373948899879752395}
   - {fileID: 887093244}
   - {fileID: 2000482870}
   - {fileID: 309251667}

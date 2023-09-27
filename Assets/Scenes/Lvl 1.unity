@@ -1458,30 +1458,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916422832}
   m_CullTransparentMesh: 1
---- !u!1 &942208168 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2586195700067270005, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-  m_PrefabInstance: {fileID: 1276295942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &942208171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942208168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9040af9c94e6d94cb595600a7887fd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  G: 0
-  H: 0
-  isBlocked: 0
-  ice: 0
-  hp: 0
-  previous: {fileID: 0}
-  gridLocation: {x: -6, y: -9, z: 1}
 --- !u!1 &947136225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,6 +1627,9 @@ MonoBehaviour:
   blackIceTile: {fileID: 11400000, guid: 72979c994bb45f34bb7d2930739c6810, type: 2}
   waterTile: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
   ignoreBottomTiles: 1
+  spawnlocationxyz: {x: -6, y: -9, z: 1}
+  spawnLocationTilekey: {x: 0, y: 0}
+  spawnLocation: {fileID: 0}
 --- !u!156049354 &971235384
 Grid:
   m_ObjectHideFlags: 0
@@ -1953,7 +1932,7 @@ PrefabInstance:
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: spawnLocation
       value: 
-      objectReference: {fileID: 942208171}
+      objectReference: {fileID: 0}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: testAnimation
       value: 1
@@ -1962,6 +1941,18 @@ PrefabInstance:
       propertyPath: characterPrefab
       value: 
       objectReference: {fileID: 7634530525539361949, guid: ae2d2f053e3366547b9d5e49791be963, type: 3}
+    - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+      propertyPath: BlackIceCracked1
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a2e918bcede3174982669542f76559d, type: 2}
+    - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+      propertyPath: BlackIceCracked2
+      value: 
+      objectReference: {fileID: 11400000, guid: 555a6b6d0422b3b459d7587213031234, type: 2}
+    - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
+      propertyPath: PackedIceCracked
+      value: 
+      objectReference: {fileID: 11400000, guid: 56355b5036eb70045b6d728e16c7b4a0, type: 2}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: IceCrackAnimation
       value: 
@@ -2101,75 +2092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9040af9c94e6d94cb595600a7887fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1276295942
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: gridLocation.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: gridLocation.y
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2586195700067270005, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_Name
-      value: SpawnLocation
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598312778839359105, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2384198392727913420, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2586195700067270005, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 942208171}
-  m_SourcePrefab: {fileID: 100100000, guid: f686c70ef08eaa247b9bcac899ec7423, type: 3}
 --- !u!1 &1512538507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3101,7 +3023,7 @@ Tilemap:
       - {fileID: -267745740, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
       - {fileID: -668963257, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
       - {fileID: -802160362, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -9, z: 1}
@@ -4730,7 +4652,6 @@ SceneRoots:
   - {fileID: 330940880}
   - {fileID: 5064893430309787323}
   - {fileID: 1083060148}
-  - {fileID: 1276295942}
   - {fileID: 3726367887821967648}
   - {fileID: 113197075507898302}
   - {fileID: 1037805599}

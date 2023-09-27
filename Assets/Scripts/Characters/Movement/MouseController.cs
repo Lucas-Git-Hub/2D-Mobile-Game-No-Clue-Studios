@@ -19,7 +19,6 @@ public class MouseController : MonoBehaviour
     public TileBase BlackIceCracked1;
     public TileBase BlackIceCracked2;
     private CharacterInfo character;
-    private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
     private RangeFinder rangeFinder;
     private List<OverlayTile> path;
@@ -27,27 +26,19 @@ public class MouseController : MonoBehaviour
     public Tilemap tileMap;
     private OverlayTile startTile;
     private OverlayTile endTile;
-    public OverlayTile spawnLocation;
     private AudioSource currentSoundSource;
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
     public MapManager mapManager;
-    
+    private bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
         pathFinder = new Pathfinder();
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
-
-        //if character isnt spawned in spawn him in
-        if (character == null)
-        {
-            character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-            PositionCharacterOnLine(spawnLocation);
-            // GetInRangeTiles();
-        }
 
         currentSoundSource = GetComponentInChildren<AudioSource>();
 
@@ -62,9 +53,18 @@ public class MouseController : MonoBehaviour
 
     void LateUpdate()
     {
+        //if character isnt spawned in spawn him in
+        if (character == null && mapManager.spawnLocation)
+        {
+            character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+            character.standingOnTile = mapManager.spawnLocation;
+            PositionCharacterOnLine(mapManager.spawnLocation);
+            GetInRangeTiles();
+        }
+
         RaycastHit2D? focusedTileHit = GetFocusedOnTile(); 
         
-        if (focusedTileHit.HasValue)
+        if (focusedTileHit.HasValue && isMoving == false)
         {
             if(focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>())
             {
@@ -76,7 +76,7 @@ public class MouseController : MonoBehaviour
 
                 startTile = character.standingOnTile;
                 endTile = overlayTile;
-                path = pathFinder.FindPath(character.standingOnTile, overlayTile);
+                path = pathFinder.FindPath(character.standingOnTile, overlayTile, inRangeTiles);
 
                 overlayTile.HideTile();
             }
@@ -85,22 +85,23 @@ public class MouseController : MonoBehaviour
         if(path.Count > 0 && endTile != null)
         {   
             StartCoroutine(MoveAlongPath(startTile, endTile));
+            isMoving = true;
+        }
+
+        //Show current available path for player character after moving
+        if(path.Count == 0)
+        {
+            isMoving = false;
+            endTile = mapManager.spawnLocation;
+            GetInRangeTiles();
+            isMoving = false;
+            StopCoroutine(MoveAlongPath(character.standingOnTile, endTile));
         }
     }
 
     private void GetInRangeTiles()
     {
-        foreach(var item in inRangeTiles)
-        {
-            item.HideTile();
-        }
-        
         inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 3);
-
-        foreach(var item in inRangeTiles)
-        {
-            item.ShowTile();
-        }
     }
 
     private IEnumerator MoveAlongPath(OverlayTile startingTile, OverlayTile end)
@@ -118,7 +119,7 @@ public class MouseController : MonoBehaviour
             if(startingTile.ice == true && startingTile != previousTile)
             {   
                 IceTileChecker(startingTile);
-                startTile = spawnLocation;
+                startTile = mapManager.overlayTilePrefab;
             }
 
             PositionCharacterOnLine(path[0]);
@@ -129,14 +130,6 @@ public class MouseController : MonoBehaviour
             }
 
             path.RemoveAt(0);
-        }
-
-        //Show current available path for player character after moving
-        if(path.Count == 0)
-        {
-            endTile = spawnLocation;
-            // GetInRangeTiles();
-            StopCoroutine(MoveAlongPath(character.standingOnTile, endTile));
         }
         yield return null;
     }
