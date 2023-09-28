@@ -11,9 +11,14 @@ public class MapManager : MonoBehaviour
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
     public Tile iceTile;
+    public Tile packedIceTile;
+    public Tile blackIceTile;
     public TileBase waterTile;
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
+    public Vector3Int spawnlocationxyz;
+    public Vector2Int spawnLocationTilekey;
+    public OverlayTile spawnLocation;
 
     private void Awake()
     {
@@ -42,8 +47,10 @@ public class MapManager : MonoBehaviour
                 for (int x = bounds.min.x; x < bounds.max.x; x++)
                 {
                     if (z == 0 && ignoreBottomTiles)
+                    {
                         return;
-
+                    }
+                    
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
@@ -51,7 +58,7 @@ public class MapManager : MonoBehaviour
                     {
                         var overlayTile = Instantiate(overlayTilePrefab, overlayContainer.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
-
+                        
                         overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
                         overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
                         overlayTile.gridLocation = tileLocation;
@@ -59,17 +66,46 @@ public class MapManager : MonoBehaviour
                         if (tileMap.GetTile(tileLocation) == iceTile)
                         {
                             overlayTile.ice = true;
+                            overlayTile.hp = 1;
+                        } else if (tileMap.GetTile(tileLocation) == packedIceTile)
+                        {
+                            overlayTile.ice = true;
+                            overlayTile.hp = 2;
+                        } else if (tileMap.GetTile(tileLocation) == blackIceTile)
+                        {
+                            overlayTile.ice = true;
+                            overlayTile.hp = 3;
                         }
                         map.Add(tileKey, overlayTile);
+
+                        if(overlayTile.gridLocation == spawnlocationxyz)
+                        {
+                            spawnLocation = overlayTile;
+                            spawnLocationTilekey = tileKey;
+                        }
                     }
                 }
             }
         }
     }
 
-    public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile)
+    public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile, List<OverlayTile> searchableTiles)
     {
         var map = MapManager.Instance.map;
+
+        Dictionary<Vector2Int, OverlayTile> tileSearch = new Dictionary<Vector2Int, OverlayTile>();
+
+        if(searchableTiles.Count > 0)
+        {
+            foreach(var item in searchableTiles)
+            {
+                tileSearch.Add(item.grid2DLocation, item);
+            }
+        } else 
+        {
+            tileSearch = map;
+        }
+
 
         List<OverlayTile> neighbours = new List<OverlayTile>();
 
@@ -79,10 +115,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.y + 1
             );
 
-        if (map.ContainsKey(locationToCheck))
+        if (tileSearch.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
-                neighbours.Add(map[locationToCheck]);
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileSearch[locationToCheck]);
         }
 
         // Bottom Neighbour
@@ -91,10 +127,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.y - 1
             );
 
-        if (map.ContainsKey(locationToCheck))
+        if (tileSearch.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
-                neighbours.Add(map[locationToCheck]);
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileSearch[locationToCheck]);
         }
 
         // Right Neighbour
@@ -103,10 +139,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.y
             );
 
-        if (map.ContainsKey(locationToCheck))
+        if (tileSearch.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
-                neighbours.Add(map[locationToCheck]);
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileSearch[locationToCheck]);
         }
 
         //Left Neighbour
@@ -115,10 +151,10 @@ public class MapManager : MonoBehaviour
             currentOverlayTile.gridLocation.y
             );
 
-        if (map.ContainsKey(locationToCheck))
+        if (tileSearch.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(currentOverlayTile.gridLocation.z - map[locationToCheck].gridLocation.z) <= 1)
-                neighbours.Add(map[locationToCheck]);
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileSearch[locationToCheck]);
         }
 
         return neighbours;

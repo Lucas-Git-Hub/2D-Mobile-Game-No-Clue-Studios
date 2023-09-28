@@ -200,8 +200,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -948217781
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1ff9b8d5e4f72cc4d9628e2f7c2211dc, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.16470589}
@@ -227,11 +227,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  characterPrefab: {fileID: 5870289866645401721, guid: c9780e45b4c08e24087c91e062a3904d, type: 3}
+  characterPrefab: {fileID: 7634530525539361949, guid: ae2d2f053e3366547b9d5e49791be963, type: 3}
   WaterTile: {fileID: 11400000, guid: d6b4813e96518ca4a9a8da9f98ef4dab, type: 2}
   IceCrackAnimation: {fileID: 11400000, guid: a925ddd165dc78f4ca1a1a98fa788afb, type: 2}
+  PackedIceCracked: {fileID: 0}
+  BlackIceCracked1: {fileID: 0}
+  BlackIceCracked2: {fileID: 0}
   tileMap: {fileID: 0}
   spawnLocation: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: bb8a6d3f07813cc4a930b575809eb89e, type: 3}
   playBackgroundMusic: 1
   musicVolume: 0.8
+  mapManager: {fileID: 0}
