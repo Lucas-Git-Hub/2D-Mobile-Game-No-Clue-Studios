@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33d05de06b2bd0f40abbb8a71e744822
+guid: 3b93820bd85fbc54d99ccf16275368fe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pause button_0
+      name: cindy puzzle 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 25
-        height: 26
+        x: 13
+        y: 202
+        width: 159
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e60b71d0b9cd1749af0f7ed2cfebd2e
-      internalID: -1864937178
+      spriteID: 79618f772879917438b40bdcf7184242
+      internalID: 2121733089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pause button_1
+      name: cindy puzzle 1_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 0
-        width: 25
-        height: 26
+        x: 179
+        y: 202
+        width: 158
+        height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,8 +158,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc0c88739d73fe043b0f00575d43f715
-      internalID: -1454092622
+      spriteID: 1bff2d6668b4f3d428049a2c4b1940ea
+      internalID: -99895891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cindy puzzle 1_2
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 4
+        width: 146
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72925708973d89478cd06052f157690
+      internalID: -1819975888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cindy puzzle 1_3
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 4
+        width: 146
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f156b6a700c39f4e96a6f00fc67cd9e
+      internalID: 1171693363
       vertices: []
       indices: 
       edges: []
@@ -175,8 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pause button_0: -1864937178
-      pause button_1: -1454092622
+      cindy puzzle 1_0: 2121733089
+      cindy puzzle 1_1: -99895891
+      cindy puzzle 1_2: -1819975888
+      cindy puzzle 1_3: 1171693363
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
