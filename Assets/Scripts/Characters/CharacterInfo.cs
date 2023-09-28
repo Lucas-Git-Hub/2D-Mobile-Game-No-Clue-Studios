@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterInfo : MonoBehaviour
 {
@@ -119,8 +120,6 @@ public class CharacterInfo : MonoBehaviour
             UIHandler.instance.ShowLevelDialog("LEVEL COMPLETE", collectedCoins.ToString(), collectedCoins);
         }
     }  
-
-
            
     private void ClearSnowPile(GameObject snowPileGameObject)
     {
