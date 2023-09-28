@@ -12,8 +12,6 @@ public class CharacterInfo : MonoBehaviour
     public AudioClip coinPickup;
     public AudioClip boltPickup;
     public AudioClip iceCrackSound;
-    public AudioClip iceAlmostBreakSound;
-    public AudioClip iceBreakSound;
     private AudioSource currentSoundSource;
     public Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -33,43 +31,39 @@ public class CharacterInfo : MonoBehaviour
     
     void Update()
     {
-        WalkDirection();
-
-        previousX = transform.position.x;
-        previousY = transform.position.y;
-    }
-
-    private void WalkDirection()
-    {
         // NE = x++ & y++
         if(transform.position.x > previousX && transform.position.y > previousY)
         {
-            spriteRenderer.flipX = true;
             animator.SetInteger("Direction", 1);
+            spriteRenderer.flipX = true;
         }
         // NW = x-- & y++
         else if(transform.position.x < previousX && transform.position.y > previousY)
         {
-            spriteRenderer.flipX = false;
             animator.SetInteger("Direction", 1);
+            spriteRenderer.flipX = false;
         }
         // SE = x++ & y--
         else if(transform.position.x > previousX && transform.position.y < previousY)
         {
-            spriteRenderer.flipX = false;
             animator.SetInteger("Direction", 2);
+            spriteRenderer.flipX = false;
         }
         // SW = x-- & y--  
         else if(transform.position.x < previousX && transform.position.y < previousY)
         {
-            spriteRenderer.flipX = true;
             animator.SetInteger("Direction", 2);
+            spriteRenderer.flipX = true;
         }
-        else if(transform.position.x == previousX && transform.position.y == previousY)
+        else
         {
             spriteRenderer.flipX = false;
+
             animator.SetInteger("Direction", 0);
         }
+
+        previousX = transform.position.x;
+        previousY = transform.position.y;
     }
 
     public void PlayIceCrackingSound()
@@ -77,20 +71,6 @@ public class CharacterInfo : MonoBehaviour
         if(iceCrackSound != null)
         {
             currentSoundSource.PlayOneShot(iceCrackSound, 1);
-        }
-    }
-    public void PlayIceAlmostBreakingSound()
-    {
-        if(iceAlmostBreakSound != null)
-        {
-            currentSoundSource.PlayOneShot(iceAlmostBreakSound, 1);
-        }
-    }
-    public void PlayIceBreakingSound()
-    {
-        if(iceBreakSound != null)
-        {
-            currentSoundSource.PlayOneShot(iceBreakSound, 1);
         }
     }
 

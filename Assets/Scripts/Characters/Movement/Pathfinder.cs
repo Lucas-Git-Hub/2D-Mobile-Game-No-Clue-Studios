@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Pathfinder
 { 
-    public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end, List<OverlayTile> searchableTiles)
+    public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end)
     {
         List<OverlayTile> openList = new List<OverlayTile>();
         List<OverlayTile> closedList = new List<OverlayTile>();
@@ -26,7 +26,7 @@ public class Pathfinder
                 return GetFinishedList(start, end);
             }
 
-            var neighbourTiles = MapManager.Instance.GetNeighbourTiles(currentOverlayTile, searchableTiles);
+            var neighbourTiles = MapManager.Instance.GetNeighbourTiles(currentOverlayTile);
 
             foreach( var neighbour in neighbourTiles)
             {   

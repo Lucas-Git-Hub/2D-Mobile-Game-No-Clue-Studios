@@ -14,33 +14,36 @@ public class MouseController : MonoBehaviour
     private Touch touch;
     public GameObject characterPrefab;
     public TileBase WaterTile;
-    public TileBase IceBreakAnimation;
-    public TileBase PackedIceBreakAnimation;
-    public TileBase BlackIceBreakAnimation;
-    public TileBase PackedIceCracked;
-    public TileBase BlackIceCracked1;
-    public TileBase BlackIceCracked2;
+    public TileBase IceCrackAnimation;
     private CharacterInfo character;
+    private SideCharacterInfo sideCharacter;
     private Pathfinder pathFinder;
     private RangeFinder rangeFinder;
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
     public Tilemap tileMap;
-    private OverlayTile startTile;
+    private OverlayTile startingTile;
     private OverlayTile endTile;
+    public OverlayTile spawnLocation;
     private AudioSource currentSoundSource;
     public AudioClip backgroundMusic;
     public bool playBackgroundMusic = false;
     public float musicVolume = 0.8f;
-    public MapManager mapManager;
-    private bool isMoving = false;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         pathFinder = new Pathfinder();
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
+
+        //if character isnt spawned in spawn him in
+        if (character == null)
+        {
+            character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+            PositionCharacterOnLine(spawnLocation);
+            // GetInRangeTiles();
+        }
 
         currentSoundSource = GetComponentInChildren<AudioSource>();
 
@@ -55,18 +58,9 @@ public class MouseController : MonoBehaviour
 
     void LateUpdate()
     {
-        //if character isnt spawned in spawn him in
-        if (character == null && mapManager.spawnLocation)
-        {
-            character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-            character.standingOnTile = mapManager.spawnLocation;
-            PositionCharacterOnLine(mapManager.spawnLocation);
-            GetInRangeTiles();
-        }
-
         RaycastHit2D? focusedTileHit = GetFocusedOnTile(); 
         
-        if (focusedTileHit.HasValue && isMoving == false)
+        if (focusedTileHit.HasValue)
         {
             if(focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>())
             {
@@ -76,9 +70,9 @@ public class MouseController : MonoBehaviour
 
                 overlayTile.ShowTile();
 
-                startTile = character.standingOnTile;
                 endTile = overlayTile;
-                path = pathFinder.FindPath(character.standingOnTile, overlayTile, inRangeTiles);
+                startingTile = character.standingOnTile;
+                path = pathFinder.FindPath(character.standingOnTile, overlayTile);
 
                 overlayTile.HideTile();
             }
@@ -86,30 +80,30 @@ public class MouseController : MonoBehaviour
 
         if(path.Count > 0 && endTile != null)
         {   
-            StartCoroutine(MoveAlongPath(startTile, endTile));
-            isMoving = true;
-        }
-
-        //Show current available path for player character after moving
-        if(path.Count == 0)
-        {
-            isMoving = false;
-            endTile = mapManager.spawnLocation;
-            GetInRangeTiles();
-            isMoving = false;
-            StopCoroutine(MoveAlongPath(character.standingOnTile, endTile));
+            MoveAlongPath(startingTile, endTile);
         }
     }
 
     private void GetInRangeTiles()
     {
-        inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 3);
+        foreach(var item in inRangeTiles)
+        {
+            item.HideTile();
+        }
+        
+        inRangeTiles = rangeFinder.GetTilesInRange(character.standingOnTile, 15);
+
+        foreach(var item in inRangeTiles)
+        {
+            item.ShowTile();
+        }
     }
 
-    private IEnumerator MoveAlongPath(OverlayTile startingTile, OverlayTile end)
+    private void MoveAlongPath(OverlayTile startingTile, OverlayTile end)
     {
         var step = speed * Time.deltaTime;
         var previousTile = path[0];
+        bool begin = true;
 
         float zIndex = path[0].transform.position.z;
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
@@ -118,84 +112,45 @@ public class MouseController : MonoBehaviour
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {   
-            if(startingTile.ice == true && startingTile != previousTile)
-            {   
-                IceTileChecker(startingTile);
-                startTile = mapManager.overlayTilePrefab;
-            }
-
             PositionCharacterOnLine(path[0]);
 
-            if(previousTile.ice == true && previousTile != end && previousTile != startingTile)
+            if(begin)
             {   
-                IceTileChecker(previousTile);
+                if(startingTile.ice == true)
+                {   
+                    TileAnimation(startingTile);
+                }
+                begin = false;
+            }
+
+            if(previousTile.ice == true && path[0] != end)
+            {   
+                TileAnimation(previousTile);
             }
 
             path.RemoveAt(0);
         }
-        yield return null;
-    }
 
-    private void IceTileUpdater(OverlayTile tile)
-    {
-        tile.hp -= 1;
-        if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
+        //Show current available path for player character after moving
+        if(path.Count == 0)
         {
-            TileCrack(tile, PackedIceCracked);
-            character.PlayIceAlmostBreakingSound();
-        } else if (tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked1)
-        {
-            TileCrack(tile, BlackIceCracked2);
-            character.PlayIceAlmostBreakingSound();
-        } else if(tile.hp == 2)
-        {
-            TileCrack(tile, BlackIceCracked1);
-            character.PlayIceCrackingSound();
-        }
-    }
-    private void IceTileChecker(OverlayTile tile)
-    {
-        // Change Iceblock and refresh the tilemap 
-        if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == mapManager.packedIceTile)
-        {
-            IceTileUpdater(tile);
-        } else if(tile.hp == 2 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked1)
-        {
-            IceTileUpdater(tile);
-        } else if(tile.hp == 3)
-        {
-            IceTileUpdater(tile);
-        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.iceTile)
-        {
-            IceTileUpdater(tile);
-            TileAnimation(tile, IceBreakAnimation);
-        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == PackedIceCracked)
-        {
-            IceTileUpdater(tile);
-            TileAnimation(tile, PackedIceBreakAnimation);
-        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked2)
-        {
-            IceTileUpdater(tile);
-            TileAnimation(tile, BlackIceBreakAnimation);
+            endTile = character.standingOnTile;
+            // GetInRangeTiles();
         }
     }
 
-    private void TileCrack(OverlayTile tile, TileBase tileBase)
+    private void TileAnimation(OverlayTile tile)
     {
-        tileMap.SetTile(tile.gridLocation, tileBase);
-        tileMap.RefreshTile(tile.gridLocation);
-    }
-    private void TileAnimation(OverlayTile tile, TileBase tileBase)
-    {
+        // Change Iceblock and refresh the tilemap
         tile.isBlocked = true;
-        tileMap.SetTile(tile.gridLocation, tileBase);
-        character.PlayIceBreakingSound();
+        tileMap.SetTile(tile.gridLocation, IceCrackAnimation);
+        character.PlayIceCrackingSound();
         tileMap.RefreshTile(tile.gridLocation);
 
-        StartCoroutine(PlayTileAnimationAfterDelay(tile));
+        StartCoroutine(CheckAnimationFrame(tile));
     }
 
-    private IEnumerator PlayTileAnimationAfterDelay(OverlayTile tile)
+    private IEnumerator CheckAnimationFrame(OverlayTile tile)
     {
         yield return new WaitForSeconds(.8f);
 

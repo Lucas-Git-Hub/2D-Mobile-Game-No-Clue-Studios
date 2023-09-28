@@ -3,17 +3,7 @@ guid: 28d97c0c3f54ab44cb02785d08737175
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - characterPrefab: {instanceID: 0}
-  - WaterTile: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
-  - IceCrackAnimation: {fileID: 11400000, guid: a925ddd165dc78f4ca1a1a98fa788afb, type: 2}
-  - PackedIceCracked: {fileID: 11400000, guid: 56355b5036eb70045b6d728e16c7b4a0, type: 2}
-  - BlackIceCracked1: {fileID: 11400000, guid: 2a2e918bcede3174982669542f76559d, type: 2}
-  - BlackIceCracked2: {fileID: 11400000, guid: 555a6b6d0422b3b459d7587213031234, type: 2}
-  - tileMap: {instanceID: 0}
-  - spawnLocation: {instanceID: 0}
-  - backgroundMusic: {instanceID: 0}
-  - mapManager: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
