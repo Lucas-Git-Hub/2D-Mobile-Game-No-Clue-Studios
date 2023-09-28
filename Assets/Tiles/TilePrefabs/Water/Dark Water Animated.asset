@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Dark Water Animated
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1736584534, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: -1301879257, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: 208123464, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: -927236906, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: -267745740, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: -668963257, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
-  - {fileID: -802160362, guid: 90856a93b56742147aa667ff716adb2a, type: 3}
+  - {fileID: -1518278947, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: -1718687269, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: 127681075, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: 107072274, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: -1783806304, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: 1780930112, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
+  - {fileID: -256656326, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
   m_MinSpeed: 5
   m_MaxSpeed: 5
   m_AnimationStartTime: 0

@@ -14,7 +14,9 @@ public class MouseController : MonoBehaviour
     private Touch touch;
     public GameObject characterPrefab;
     public TileBase WaterTile;
-    public TileBase IceCrackAnimation;
+    public TileBase IceBreakAnimation;
+    public TileBase PackedIceBreakAnimation;
+    public TileBase BlackIceBreakAnimation;
     public TileBase PackedIceCracked;
     public TileBase BlackIceCracked1;
     public TileBase BlackIceCracked2;
@@ -163,10 +165,18 @@ public class MouseController : MonoBehaviour
         } else if(tile.hp == 3)
         {
             IceTileUpdater(tile);
-        } else if(tile.hp == 1)
+        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == mapManager.iceTile)
         {
             IceTileUpdater(tile);
-            TileAnimation(tile, IceCrackAnimation);
+            TileAnimation(tile, IceBreakAnimation);
+        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == PackedIceCracked)
+        {
+            IceTileUpdater(tile);
+            TileAnimation(tile, PackedIceBreakAnimation);
+        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == BlackIceCracked2)
+        {
+            IceTileUpdater(tile);
+            TileAnimation(tile, BlackIceBreakAnimation);
         }
     }
 
