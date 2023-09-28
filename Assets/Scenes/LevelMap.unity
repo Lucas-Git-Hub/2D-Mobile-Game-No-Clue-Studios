@@ -3073,8 +3073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 3
   B_Gear: {fileID: 1723983404}
-  S_Gear: {fileID: 758260110}
-  G_Gear: {fileID: 999432274}
+  S_Gear: {fileID: 1362326082}
+  G_Gear: {fileID: 1460032963}
   bronzeGear: {fileID: -1633851761, guid: 7707a55b49fba0946869f3dc9924850e, type: 3}
   silverGear: {fileID: 1767732529, guid: 7707a55b49fba0946869f3dc9924850e, type: 3}
   goldGear: {fileID: -451428399, guid: 7707a55b49fba0946869f3dc9924850e, type: 3}
