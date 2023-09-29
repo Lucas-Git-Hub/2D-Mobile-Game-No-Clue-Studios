@@ -4666,6 +4666,38 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Bolt
       objectReference: {fileID: 0}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_Size.x
+      value: 2.53125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_Size.y
+      value: 3.1875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2042979089, guid: 4655250b748278141b3923f6f6c80de8, type: 3}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5709395196631963459, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_IsTrigger
       value: 1
