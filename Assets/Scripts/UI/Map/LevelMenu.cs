@@ -17,7 +17,10 @@ public class LevelMenu : MonoBehaviour
         }
         for (int i = 0; i < unlockedLvl; i++)
         {
-            buttons[i].interactable = true;
+            if(i < buttons.Length)
+            {
+                buttons[i].interactable = true;
+            }
         }
     } 
     public void OpenLevel(int levelId)
