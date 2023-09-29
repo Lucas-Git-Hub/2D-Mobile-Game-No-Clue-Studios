@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 {
@@ -10,29 +9,15 @@ public class UIHandler : MonoBehaviour
     public TMP_Text LevelStatus;
     public TMP_Text scoreText;
     public GameObject PauseButton;
-    private int levelIndex;
+    public int levelIndex;
     public GameObject cursor;
 
     public static UIHandler instance;
 
-    void Start()
-    {
-        levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
-    }
     void Awake()
     {
         if (instance == null)
             instance = this;
-    }
-
-    public void UnlockNewLvl()
-    {
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
-        {
-            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-            PlayerPrefs.SetInt("UnlockedLvl", PlayerPrefs.GetInt("UnlockedLvl", 1) + 1);
-            PlayerPrefs.Save();
-        }
     }
 
     public void ShowLevelDialog(string status, string scores, int gears)
@@ -49,13 +34,8 @@ public class UIHandler : MonoBehaviour
         if (gears > PlayerPrefs.GetInt("Lvl" + levelIndex))//KEY: Lv1; Value: Stars Number
         {
             PlayerPrefs.SetInt("Lvl" + levelIndex, gears);
-            PlayerPrefs.Save();
         }
-        
-        //If there is atleast 1 gear collected unlock the next lvl
-        if(gears >= 1)
-        {
-            UnlockNewLvl();
-        }
+
+        Debug.Log("Saving Data is " + PlayerPrefs.GetInt("Lvl" + levelIndex));
     }
 }
