@@ -3091,7 +3091,7 @@ Tilemap:
       - {fileID: -1783806304, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: 1780930112, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: -256656326, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: -10, z: 1}
@@ -3548,7 +3548,7 @@ Tilemap:
       - {fileID: -1783806304, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: 1780930112, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: -256656326, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -3, z: 1}
@@ -3632,7 +3632,7 @@ Tilemap:
       - {fileID: -1783806304, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: 1780930112, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
       - {fileID: -256656326, guid: 2022872a158e1da4f8e67e6da98bb905, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: -2, z: 1}
@@ -4595,7 +4595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1374071399687608820, guid: c246c2d01e1165a4c95a195dd3c3f51d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1374071399687608820, guid: c246c2d01e1165a4c95a195dd3c3f51d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4677,22 +4677,22 @@ PrefabInstance:
     - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2042979089, guid: 4655250b748278141b3923f6f6c80de8, type: 3}
+      objectReference: {fileID: -391020704, guid: 16832a76e9b9ae44f942af8016a1a911, type: 3}
     - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalPosition.y
