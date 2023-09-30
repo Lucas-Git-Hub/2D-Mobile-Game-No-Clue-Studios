@@ -17,7 +17,7 @@ public class UIHandler : MonoBehaviour
 
     void Start()
     {
-        levelIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        levelIndex = SceneManager.GetActiveScene().buildIndex;
     }
     void Awake()
     {
@@ -27,9 +27,9 @@ public class UIHandler : MonoBehaviour
 
     public void UnlockNewLvl()
     {
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        if (SceneManager.GetActiveScene().buildIndex - 1 >= PlayerPrefs.GetInt("ReachedIndex"))
         {
-            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.SetInt("UnlockedLvl", PlayerPrefs.GetInt("UnlockedLvl", 1) + 1);
             PlayerPrefs.Save();
         }
