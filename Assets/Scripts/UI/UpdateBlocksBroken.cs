@@ -21,6 +21,6 @@ public class UpdateBlocksBroken : MonoBehaviour
 
     public void UpdateBlocksBrokenText(int brokenIceBlocks, int totalBlocksNeeded)
     {
-        text.text = "Broken Ice Blocks " + brokenIceBlocks + "/" + totalBlocksNeeded;
+        text.text = brokenIceBlocks + "/" + totalBlocksNeeded;
     }
 }
