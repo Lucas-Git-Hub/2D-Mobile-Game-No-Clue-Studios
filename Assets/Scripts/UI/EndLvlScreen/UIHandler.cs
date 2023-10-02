@@ -12,7 +12,7 @@ public class UIHandler : MonoBehaviour
     public GameObject PauseButton;
     private int levelIndex;
     public GameObject cursor;
-
+    public GameObject brokenBlocksCanvas;
     public static UIHandler instance;
 
     void Start()
@@ -44,6 +44,10 @@ public class UIHandler : MonoBehaviour
         LevelStatus.text = status;
         scoreText.text = scores;
         PauseButton.SetActive(false);
+        if(brokenBlocksCanvas != null)
+        {
+            brokenBlocksCanvas.SetActive(false);   
+        }
 
         //MARKER PlayerPrefs.GetInt("Lv" + levelIndex) his default value is 0
         if (gears > PlayerPrefs.GetInt("Lvl" + levelIndex))//KEY: Lv1; Value: Stars Number

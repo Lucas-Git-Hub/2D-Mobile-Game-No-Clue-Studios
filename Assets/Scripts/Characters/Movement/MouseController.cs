@@ -17,6 +17,7 @@ public class MouseController : MonoBehaviour
     public TileBase IceBreakAnimation;
     public TileBase PackedIceBreakAnimation;
     public TileBase BlackIceBreakAnimation;
+    public TileBase IceFormingAnimation;
     public TileBase PackedIceCracked;
     public TileBase BlackIceCracked1;
     public TileBase BlackIceCracked2;
@@ -34,6 +35,8 @@ public class MouseController : MonoBehaviour
     public float musicVolume = 0.8f;
     public MapManager mapManager;
     private bool isMoving = false;
+    public int totalBlocksNeeded;
+    public UpdateBlocksBroken updateBlocksBroken;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,11 @@ public class MouseController : MonoBehaviour
             currentSoundSource.volume = musicVolume;
             currentSoundSource.loop = true;
             currentSoundSource.Play();
+        }
+
+        if(updateBlocksBroken != null)
+        {
+            updateBlocksBroken.UpdateBlocksBrokenText(0, totalBlocksNeeded);
         }
     }
 
@@ -169,6 +177,10 @@ public class MouseController : MonoBehaviour
         {
             IceTileUpdater(tile);
             TileAnimation(tile, IceBreakAnimation);
+        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == IceFormingAnimation)
+        {
+            IceTileUpdater(tile);
+            TileAnimation(tile, IceBreakAnimation);
         } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == PackedIceCracked)
         {
             IceTileUpdater(tile);
@@ -192,6 +204,17 @@ public class MouseController : MonoBehaviour
         character.PlayIceBreakingSound();
         tileMap.RefreshTile(tile.gridLocation);
 
+        character.brokenIceBlocks += 1;
+        if(updateBlocksBroken != null)
+        {
+            updateBlocksBroken.UpdateBlocksBrokenText(character.brokenIceBlocks, totalBlocksNeeded);
+        }
+        
+        if(character.brokenIceBlocks == totalBlocksNeeded)
+        {
+            OpenPath();
+        }
+
         StartCoroutine(PlayTileAnimationAfterDelay(tile));
     }
 
@@ -203,6 +226,13 @@ public class MouseController : MonoBehaviour
         tileMap.SetTile(tile.gridLocation, WaterTile);
         tileMap.RefreshTile(tile.gridLocation);
         yield break;
+    }
+
+    private void OpenPath()
+    {
+        tileMap.SetTile(mapManager.bridgeTile.gridLocation, IceFormingAnimation);
+        tileMap.RefreshTile(mapManager.bridgeTile.gridLocation);
+        mapManager.bridgeTile.isBlocked = false;
     }
 
     public void RefreshMap()

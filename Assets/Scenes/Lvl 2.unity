@@ -641,8 +641,9 @@ MonoBehaviour:
   waterTile: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
   ignoreBottomTiles: 1
   spawnlocationxyz: {x: 0, y: -3, z: 1}
-  spawnLocationTilekey: {x: 0, y: 0}
   spawnLocation: {fileID: 0}
+  bridgeLocation: {x: 0, y: 0, z: 0}
+  bridgeTile: {fileID: 0}
 --- !u!1 &453738107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,7 +3179,7 @@ PrefabInstance:
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: backgroundMusic
       value: 
-      objectReference: {fileID: 8300000, guid: 9497390689b36a94b81ab0575693f049, type: 3}
+      objectReference: {fileID: 8300000, guid: 95a8dcc26c95ca3458359ef8005f87fd, type: 3}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: characterPrefab
       value: 

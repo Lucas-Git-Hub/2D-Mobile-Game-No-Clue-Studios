@@ -20,8 +20,11 @@ public class CharacterInfo : MonoBehaviour
     private float previousX;
     private float previousY;
 
+    public int brokenIceBlocks;
+
     void Start()
     {
+        brokenIceBlocks = 0;
         currentSoundSource = GetComponentInChildren<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
@@ -76,21 +79,21 @@ public class CharacterInfo : MonoBehaviour
     {
         if(iceCrackSound != null)
         {
-            currentSoundSource.PlayOneShot(iceCrackSound, 1);
+            currentSoundSource.PlayOneShot(iceCrackSound, 0.4f);
         }
     }
     public void PlayIceAlmostBreakingSound()
     {
         if(iceAlmostBreakSound != null)
         {
-            currentSoundSource.PlayOneShot(iceAlmostBreakSound, 1);
+            currentSoundSource.PlayOneShot(iceAlmostBreakSound, 0.4f);
         }
     }
     public void PlayIceBreakingSound()
     {
         if(iceBreakSound != null)
         {
-            currentSoundSource.PlayOneShot(iceBreakSound, 1);
+            currentSoundSource.PlayOneShot(iceBreakSound, 0.4f);
         }
     }
 
@@ -119,7 +122,7 @@ public class CharacterInfo : MonoBehaviour
             Destroy(coinGameObject);
             if (coinPickup != null)
             {
-                currentSoundSource.PlayOneShot(coinPickup, 1);
+                currentSoundSource.PlayOneShot(coinPickup, 0.5f);
             }
             collectedCoins++;
         }
