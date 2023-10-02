@@ -20,8 +20,11 @@ public class CharacterInfo : MonoBehaviour
     private float previousX;
     private float previousY;
 
+    public int brokenIceBlocks;
+
     void Start()
     {
+        brokenIceBlocks = 0;
         currentSoundSource = GetComponentInChildren<AudioSource>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();

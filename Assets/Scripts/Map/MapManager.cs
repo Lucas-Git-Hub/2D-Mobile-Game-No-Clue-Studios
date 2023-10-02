@@ -17,9 +17,9 @@ public class MapManager : MonoBehaviour
     public bool ignoreBottomTiles;
     public Dictionary<Vector2Int, OverlayTile> map;
     public Vector3Int spawnlocationxyz;
-    public Vector2Int spawnLocationTilekey;
     public OverlayTile spawnLocation;
-
+    public Vector3Int bridgeLocation;
+    public OverlayTile bridgeTile;
     private void Awake()
     {
         if(_instance != null && _instance != this)
@@ -76,13 +76,20 @@ public class MapManager : MonoBehaviour
                             overlayTile.ice = true;
                             overlayTile.hp = 3;
                         }
+
+                        if(overlayTile.gridLocation == bridgeLocation && bridgeLocation != null)
+                        {
+                            overlayTile.isBlocked = true;
+                            bridgeTile = overlayTile;
+                        }
+
                         map.Add(tileKey, overlayTile);
 
                         if(overlayTile.gridLocation == spawnlocationxyz)
                         {
                             spawnLocation = overlayTile;
-                            spawnLocationTilekey = tileKey;
                         }
+                        
                     }
                 }
             }

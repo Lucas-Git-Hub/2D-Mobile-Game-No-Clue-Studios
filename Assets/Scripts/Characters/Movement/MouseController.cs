@@ -34,6 +34,7 @@ public class MouseController : MonoBehaviour
     public float musicVolume = 0.8f;
     public MapManager mapManager;
     private bool isMoving = false;
+    public int totalBlocksNeeded;
 
     // Start is called before the first frame update
     void Start()
@@ -192,6 +193,13 @@ public class MouseController : MonoBehaviour
         character.PlayIceBreakingSound();
         tileMap.RefreshTile(tile.gridLocation);
 
+        character.brokenIceBlocks += 1;
+        
+        if(character.brokenIceBlocks == totalBlocksNeeded)
+        {
+            OpenPath();
+        }
+
         StartCoroutine(PlayTileAnimationAfterDelay(tile));
     }
 
@@ -203,6 +211,14 @@ public class MouseController : MonoBehaviour
         tileMap.SetTile(tile.gridLocation, WaterTile);
         tileMap.RefreshTile(tile.gridLocation);
         yield break;
+    }
+
+    private void OpenPath()
+    {
+        Debug.Log("OpenPath");
+        tileMap.SetTile(mapManager.bridgeTile.gridLocation, mapManager.iceTile);
+        tileMap.RefreshTile(mapManager.bridgeTile.gridLocation);
+        mapManager.bridgeTile.isBlocked = false;
     }
 
     public void RefreshMap()
