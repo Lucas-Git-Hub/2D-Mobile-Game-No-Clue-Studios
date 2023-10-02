@@ -816,8 +816,9 @@ MonoBehaviour:
   waterTile: {fileID: 11400000, guid: 3ce27f900526a8f42bbff5f1e69a3d28, type: 2}
   ignoreBottomTiles: 1
   spawnlocationxyz: {x: -3, y: -5, z: 1}
-  spawnLocationTilekey: {x: 0, y: 0}
   spawnLocation: {fileID: 0}
+  bridgeLocation: {x: 0, y: 0, z: 0}
+  bridgeTile: {fileID: 0}
 --- !u!156049354 &344113630
 Grid:
   m_ObjectHideFlags: 0
@@ -2631,7 +2632,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelMap
+          m_StringArgument: Lvl 5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1774731353

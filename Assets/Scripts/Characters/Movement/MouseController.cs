@@ -17,6 +17,7 @@ public class MouseController : MonoBehaviour
     public TileBase IceBreakAnimation;
     public TileBase PackedIceBreakAnimation;
     public TileBase BlackIceBreakAnimation;
+    public TileBase IceFormingAnimation;
     public TileBase PackedIceCracked;
     public TileBase BlackIceCracked1;
     public TileBase BlackIceCracked2;
@@ -170,6 +171,10 @@ public class MouseController : MonoBehaviour
         {
             IceTileUpdater(tile);
             TileAnimation(tile, IceBreakAnimation);
+        } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == IceFormingAnimation)
+        {
+            IceTileUpdater(tile);
+            TileAnimation(tile, IceBreakAnimation);
         } else if(tile.hp == 1 && tileMap.GetTile(tile.gridLocation) == PackedIceCracked)
         {
             IceTileUpdater(tile);
@@ -216,7 +221,7 @@ public class MouseController : MonoBehaviour
     private void OpenPath()
     {
         Debug.Log("OpenPath");
-        tileMap.SetTile(mapManager.bridgeTile.gridLocation, mapManager.iceTile);
+        tileMap.SetTile(mapManager.bridgeTile.gridLocation, IceFormingAnimation);
         tileMap.RefreshTile(mapManager.bridgeTile.gridLocation);
         mapManager.bridgeTile.isBlocked = false;
     }

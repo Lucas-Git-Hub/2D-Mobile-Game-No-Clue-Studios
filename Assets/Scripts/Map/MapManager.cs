@@ -80,6 +80,8 @@ public class MapManager : MonoBehaviour
                         if(overlayTile.gridLocation == bridgeLocation && bridgeLocation != null)
                         {
                             overlayTile.isBlocked = true;
+                            overlayTile.ice = true;
+                            overlayTile.hp = 1;
                             bridgeTile = overlayTile;
                         }
 
