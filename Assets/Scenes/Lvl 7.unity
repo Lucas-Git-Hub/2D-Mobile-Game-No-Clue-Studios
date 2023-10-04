@@ -2218,13 +2218,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bolt
       objectReference: {fileID: 0}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1303689238, guid: 41adf2e660d989e428c6903d388bceab, type: 3}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8651054245441843760, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -1.536
       objectReference: {fileID: 0}
     - target: {fileID: 8651054245441843760, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.25
+      value: -1.161
       objectReference: {fileID: 0}
     - target: {fileID: 8651054245441843760, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1720,7 +1720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &397339343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1815,6 +1815,34 @@ PrefabInstance:
     - target: {fileID: 688797037096910966, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_Name
       value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710176347268676223, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1175665474, guid: 16832a76e9b9ae44f942af8016a1a911, type: 3}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953648183869500882, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8651054245441843760, guid: 5d63cabf90cdfe7498e0c339d3fb76db, type: 3}
       propertyPath: m_LocalPosition.x

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cheats : MonoBehaviour
 {
+    public bool cheatsEnabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,10 @@ public class Cheats : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void EnableCheats()
+    {
+        cheatsEnabled = true;
     }
 }
