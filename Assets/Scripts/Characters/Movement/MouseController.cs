@@ -37,6 +37,7 @@ public class MouseController : MonoBehaviour
     private bool isMoving = false;
     public int totalBlocksNeeded;
     public UpdateBlocksBroken updateBlocksBroken;
+    private bool IceBreaking = true;
 
     // Start is called before the first frame update
     void Start()
@@ -126,7 +127,7 @@ public class MouseController : MonoBehaviour
 
         if(Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {   
-            if(startingTile.ice == true && startingTile != previousTile)
+            if(startingTile.ice == true && startingTile != previousTile && IceBreaking)
             {   
                 IceTileChecker(startingTile);
                 startTile = mapManager.overlayTilePrefab;
@@ -134,7 +135,7 @@ public class MouseController : MonoBehaviour
 
             PositionCharacterOnLine(path[0]);
 
-            if(previousTile.ice == true && previousTile != end && previousTile != startingTile)
+            if(previousTile.ice == true && previousTile != end && previousTile != startingTile && IceBreaking)
             {   
                 IceTileChecker(previousTile);
             }
@@ -228,11 +229,22 @@ public class MouseController : MonoBehaviour
         yield break;
     }
 
-    private void OpenPath()
+    public void OpenPath()
     {
         tileMap.SetTile(mapManager.bridgeTile.gridLocation, IceFormingAnimation);
         tileMap.RefreshTile(mapManager.bridgeTile.gridLocation);
         mapManager.bridgeTile.isBlocked = false;
+    }
+
+    public void ToggleIceBreaking()
+    {
+        if(IceBreaking)
+        {
+            IceBreaking = false;
+        } else 
+        {
+            IceBreaking = true;
+        }
     }
 
     public void RefreshMap()
