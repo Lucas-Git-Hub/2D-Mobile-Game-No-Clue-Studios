@@ -9,19 +9,19 @@ public class Cheats : MonoBehaviour
 {
     public bool cheatsEnabled = false;
     public Button[] buttons;
-    public TextMeshProUGUI text;
+    public LevelMenu levelMenu;
+    public Collectables collectables;
 
     void Awake()
     {
         if(PlayerPrefs.GetInt("Cheats") == 1)
         {
             cheatsEnabled = true;
-            text.text = "Disable Cheats";
             UnlockAllLvls();
+            UnlockAllAchievements();
         } else 
         {
             cheatsEnabled = false;
-            text.text = "Enable Cheats";
             RegularLvlUnlocks();
         }
     }
@@ -30,25 +30,24 @@ public class Cheats : MonoBehaviour
         if(cheatsEnabled)
         {
             cheatsEnabled = false;
-            text.text = "Enable Cheats";
             PlayerPrefs.SetInt("Cheats", 0);
             PlayerPrefs.Save();
             RegularLvlUnlocks();
         } else 
         {
             cheatsEnabled = true;
-            text.text = "Disable Cheats";
             PlayerPrefs.SetInt("Cheats", 1);
             PlayerPrefs.Save();
             UnlockAllLvls();
+            UnlockAllAchievements();
         }
     }
 
     private void UnlockAllLvls()
     {
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < levelMenu.buttons.Length; i++)
         {
-            buttons[i].interactable = true;
+            levelMenu.buttons[i].interactable = true;
         }
     }
 
@@ -56,16 +55,24 @@ public class Cheats : MonoBehaviour
     {
         int unlockedLvl = PlayerPrefs.GetInt("UnlockedLvl", 1);
         
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < levelMenu.buttons.Length; i++)
         {
-            buttons[i].interactable = false;
+            levelMenu.buttons[i].interactable = false;
         }
         for (int i = 0; i < unlockedLvl; i++)
         {
-            if(i < buttons.Length)
+            if(i < levelMenu.buttons.Length)
             {
-                buttons[i].interactable = true;
+                levelMenu.buttons[i].interactable = true;
             }
+        }
+    }
+
+    private void UnlockAllAchievements()
+    {
+        for (int i = 0; i < collectables.buttons.Length; i++)
+        {
+            collectables.buttons[i].interactable = true;
         }
     }
 }
