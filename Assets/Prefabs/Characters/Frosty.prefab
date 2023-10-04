@@ -162,6 +162,7 @@ MonoBehaviour:
   iceAlmostBreakSound: {fileID: 8300000, guid: 4251fd64ac05e404abe1887b8ea3e980, type: 3}
   iceBreakSound: {fileID: 8300000, guid: 1d8c109f5beea0b44a473c82715c8cb3, type: 3}
   animator: {fileID: 1781773719399280821}
+  brokenIceBlocks: 0
 --- !u!60 &4568003808291838497
 PolygonCollider2D:
   m_ObjectHideFlags: 0
