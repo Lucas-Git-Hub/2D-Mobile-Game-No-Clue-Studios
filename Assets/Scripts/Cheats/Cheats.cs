@@ -11,16 +11,18 @@ public class Cheats : MonoBehaviour
     public Button[] buttons;
     public TextMeshProUGUI text;
 
-    void Start()
+    void Awake()
     {
         if(PlayerPrefs.GetInt("Cheats") == 1)
         {
             cheatsEnabled = true;
             text.text = "Disable Cheats";
+            UnlockAllLvls();
         } else 
         {
             cheatsEnabled = false;
             text.text = "Enable Cheats";
+            RegularLvlUnlocks();
         }
     }
     public void ToggleCheats()
