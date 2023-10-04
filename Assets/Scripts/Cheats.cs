@@ -1,24 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cheats : MonoBehaviour
 {
     public bool cheatsEnabled = false;
-    // Start is called before the first frame update
+    public Button[] buttons;
+    public TextMeshProUGUI text;
+
     void Start()
     {
-        
+        if(PlayerPrefs.GetInt("Cheats") == 1)
+        {
+            cheatsEnabled = true;
+            text.text = "Disable Cheats";
+        } else 
+        {
+            cheatsEnabled = false;
+            text.text = "Enable Cheats";
+        }
+    }
+    public void ToggleCheats()
+    {
+        if(cheatsEnabled)
+        {
+            cheatsEnabled = false;
+            text.text = "Enable Cheats";
+            PlayerPrefs.SetInt("Cheats", 0);
+            PlayerPrefs.Save();
+            RegularLvlUnlocks();
+        } else 
+        {
+            cheatsEnabled = true;
+            text.text = "Disable Cheats";
+            PlayerPrefs.SetInt("Cheats", 1);
+            PlayerPrefs.Save();
+            UnlockAllLvls();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UnlockAllLvls()
     {
-        
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = true;
+        }
     }
 
-    public void EnableCheats()
+    private void RegularLvlUnlocks()
     {
-        cheatsEnabled = true;
+        int unlockedLvl = PlayerPrefs.GetInt("UnlockedLvl", 1);
+        
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = false;
+        }
+        for (int i = 0; i < unlockedLvl; i++)
+        {
+            if(i < buttons.Length)
+            {
+                buttons[i].interactable = true;
+            }
+        }
     }
 }

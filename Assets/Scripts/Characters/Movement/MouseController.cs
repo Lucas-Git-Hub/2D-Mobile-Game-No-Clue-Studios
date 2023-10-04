@@ -41,6 +41,8 @@ public class MouseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(PlayerPrefs.GetInt("Cheats"));
+
         pathFinder = new Pathfinder();
         rangeFinder = new RangeFinder();
         path = new List<OverlayTile>();
