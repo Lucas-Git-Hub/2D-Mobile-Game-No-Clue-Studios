@@ -1465,7 +1465,7 @@ PrefabInstance:
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: characterPrefab
       value: 
-      objectReference: {fileID: 5870289866645401721, guid: ae2d2f053e3366547b9d5e49791be963, type: 3}
+      objectReference: {fileID: 5870289866645401721, guid: c9780e45b4c08e24087c91e062a3904d, type: 3}
     - target: {fileID: 3434364812159937802, guid: f4fbba739fd1f06499959a8b44512956, type: 3}
       propertyPath: BlackIceCracked1
       value: 
