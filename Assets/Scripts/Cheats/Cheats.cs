@@ -8,11 +8,10 @@ using UnityEngine.UI;
 public class Cheats : MonoBehaviour
 {
     public bool cheatsEnabled = false;
-    public Button[] buttons;
     public LevelMenu levelMenu;
     public Collectables collectables;
 
-    void Awake()
+    void Start()
     {
         if(PlayerPrefs.GetInt("Cheats") == 1)
         {
@@ -22,7 +21,8 @@ public class Cheats : MonoBehaviour
         } else 
         {
             cheatsEnabled = false;
-            RegularLvlUnlocks();
+            levelMenu.UnlockLvls(PlayerPrefs.GetInt("UnlockedLvl", 1));
+            collectables.SetAvailableAchievements(PlayerPrefs.GetInt("UnlockedLvl", 1) - 1);
         }
     }
     public void ToggleCheats()
@@ -32,7 +32,8 @@ public class Cheats : MonoBehaviour
             cheatsEnabled = false;
             PlayerPrefs.SetInt("Cheats", 0);
             PlayerPrefs.Save();
-            RegularLvlUnlocks();
+            levelMenu.UnlockLvls(PlayerPrefs.GetInt("UnlockedLvl", 1));
+            collectables.SetAvailableAchievements(PlayerPrefs.GetInt("UnlockedLvl", 1) - 1);
         } else 
         {
             cheatsEnabled = true;
@@ -50,26 +51,12 @@ public class Cheats : MonoBehaviour
             levelMenu.buttons[i].interactable = true;
         }
     }
-
-    private void RegularLvlUnlocks()
-    {
-        int unlockedLvl = PlayerPrefs.GetInt("UnlockedLvl", 1);
-        
-        for (int i = 0; i < levelMenu.buttons.Length; i++)
-        {
-            levelMenu.buttons[i].interactable = false;
-        }
-        for (int i = 0; i < unlockedLvl; i++)
-        {
-            if(i < levelMenu.buttons.Length)
-            {
-                levelMenu.buttons[i].interactable = true;
-            }
-        }
-    }
-
     private void UnlockAllAchievements()
     {
+        for (int i = 0; i < collectables.buttons.Length; i++)
+        {
+            collectables.buttons[i].interactable = false;
+        }
         for (int i = 0; i < collectables.buttons.Length; i++)
         {
             collectables.buttons[i].interactable = true;

@@ -11,6 +11,16 @@ public class LevelMenu : MonoBehaviour
     {
         int unlockedLvl = PlayerPrefs.GetInt("UnlockedLvl", 1);
 
+        UnlockLvls(unlockedLvl);
+    } 
+    public void OpenLevel(int levelId)
+    {
+        string levelName = "Lvl " + levelId;
+        SceneManager.LoadScene(levelName);
+    }
+
+    public void UnlockLvls(int unlockedLvl)
+    {
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
@@ -22,14 +32,8 @@ public class LevelMenu : MonoBehaviour
                 buttons[i].interactable = true;
             }
         }
-    } 
-    public void OpenLevel(int levelId)
-        {
-                string levelName = "Lvl " + levelId;
-                SceneManager.LoadScene(levelName);
-        }
-                
-    }
+    }          
+}
 
      
 

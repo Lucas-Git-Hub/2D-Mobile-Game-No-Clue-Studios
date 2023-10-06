@@ -11,6 +11,11 @@ public class Collectables : MonoBehaviour
     {
         int unlockedLvl = PlayerPrefs.GetInt("UnlockedLvl", 1) - 1;
 
+        SetAvailableAchievements(unlockedLvl);
+    }
+   
+    public void SetAvailableAchievements(int unlockedLvl)
+    {
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
@@ -23,7 +28,6 @@ public class Collectables : MonoBehaviour
             }
         }
     }
-   
 
 }
 
